@@ -1,4 +1,5 @@
-import monitor.Mutex;
+import monitor.GestorDeMonitor;
+
 
 public class Main {
 
@@ -6,6 +7,6 @@ public class Main {
 
         System.out.println("Hello World!");
 
-        Mutex m;
+        GestorDeMonitor gestor = new GestorDeMonitor();
     }
 }
