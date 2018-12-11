@@ -3,9 +3,9 @@ package monitor;
 public class GestorDeMonitor {
 
     private boolean k;
-
-    private Mutex m;
+    private Mutex mutex;
     private RdP red;
+
 
 
     public GestorDeMonitor() {
@@ -15,7 +15,7 @@ public class GestorDeMonitor {
     }
 
     public void dispararTransicion() {
-
+        mutex.acquire();
 
     }
 

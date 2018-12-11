@@ -6,7 +6,10 @@ public class RdP {
     private long plazas, trans;
     private Matriz m;
 
+
     public RdP() {
+
+        // m.
     }
 
     public boolean disparar() {
