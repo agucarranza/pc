@@ -1,12 +1,9 @@
-import monitor.GestorDeMonitor;
-
-
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello World!!");
+        //System.out.println("Hello World!!");
 
-        GestorDeMonitor gestor = new GestorDeMonitor();
+        //  GestorDeMonitor gestor = new GestorDeMonitor();
     }
 }

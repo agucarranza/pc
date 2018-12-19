@@ -15,7 +15,7 @@ public class GestorDeMonitor {
     }
 
     public void dispararTransicion() {
-        mutex.acquire();
+        // mutex.acquire();
 
     }
 
