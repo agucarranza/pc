@@ -1,130 +1,120 @@
 package monitor;
 
 public class Matriz {
-    private int[][] m;
 
-    public Matriz(int fil, int col) {
-        m = new int[fil][col];
+    public int[][] matriz;
+
+    public Matriz(int filas, int columnas) {
+        this.matriz = new int[filas][columnas];
     }
 
-    public Matriz(int[][] matriz) {
-        this.m = matriz;
-    }
-
-    public int[][] getMatriz() {
-        return m;
-    }
-
-    public int getValor(int fil, int col) {
-        return m[fil][col];
-    }
-
-    public void setValor(int fil, int col, int valor) {
-        this.m[fil][col] = valor;
-    }
-
-    public int getFilas() {
-        return m.length;
-    }
-
-    public int getColumnas() {
-        return m[0].length;
-    }
-
-    public void clear() {
-        for (int i = 0; i < this.getFilas(); i++) {
-            for (int j = 0; j < this.getColumnas(); j++) {
-                this.setValor(i, j, 0);
-            }
-        }
+    public Matriz(int[][] dato) {
+        this.matriz = dato;
     }
 
     public Matriz and(Matriz B) {
         Matriz A = this;
-        Matriz Result = new Matriz(B.getFilas(), B.getColumnas());
+        Matriz MAnd = new Matriz(B.getFilCount(), B.getColCount());
 
-        for (int i = 0; i < A.getFilas(); i++) {
-            for (int j = 0; j < A.getColumnas(); j++) {
-                if (A.getValor(i, j) == 1 && B.getValor(i, j) == 1) {
-                    Result.setValor(i, j, 1);
-                } else {
-                    Result.setValor(i, j, 0);
-                }
+        for (int i = 0; i < A.getFilCount(); i++) {
+            for (int j = 0; j < A.getColCount(); j++) {
+                if (A.getValor(i, j) == 1 && B.getValor(i, j) == 1) MAnd.setValor(i, j, 1);
+                else MAnd.setValor(i, j, 0);
             }
         }
-        return Result;
+
+        return MAnd;
     }
 
-    public Matriz punto(Matriz B) {
-        Matriz A = this;
-        if (A.getColumnas() != B.getFilas()) {
-            throw new RuntimeException("Dimensiones no compatibles.");
-        }
+    public boolean esCero() {
+        int aux = 0;
+        for (int i = 0; i < this.getFilCount(); i++)
+            for (int j = 0; j < this.getColCount(); j++)
+                aux = (int) (this.getValor(i, j) + aux);
 
-        Matriz C = new Matriz(A.getFilas(), B.getColumnas());
-        for (int i = 0; i < C.getFilas(); i++) {
-            for (int j = 0; j < C.getColumnas(); j++) {
-                for (int k = 0; k < A.getColumnas(); k++) {
-                    C.setValor(i, j, C.getValor(i, j) + (A.getValor(i, k) * B.getValor(k, j)));
-                }
-            }
-        }
-        return C;
-    }
-
-    public Matriz suma(Matriz B) {
-        Matriz A = this;
-        if (B.getFilas() != A.getFilas() || B.getColumnas() != A.getColumnas()) {
-            throw new RuntimeException("Dimensiones incompatibles");
-        }
-        Matriz C = new Matriz(getFilas(), getColumnas());
-        for (int i = 0; i < getFilas(); i++) {
-            for (int j = 0; j < getColumnas(); j++) {
-                C.setValor(i, j, A.getValor(i, j) + B.getValor(i, j));
-            }
-        }
-        return C;
+        return aux == 0;
     }
 
     public Matriz transpuesta() {
-        Matriz A = new Matriz(this.getColumnas(), this.getFilas());
-        for (int i = 0; i < this.getFilas(); i++) {
-            for (int j = 0; j < this.getColumnas(); j++) {
-                A.setValor(j, i, this.getValor(i, j));
+        Matriz A = new Matriz(this.getColCount(), this.getFilCount());
+        for (int i = 0; i < this.getFilCount(); i++) {
+            for (int j = 0; j < this.getColCount(); j++) {
+                A.setValor(j, i, (int) this.getValor(i, j));
             }
         }
         return A;
     }
 
-    public boolean esCero() {
-        int aux = 0;
+    public Matriz mmult(Matriz B) {
+        Matriz aux = new Matriz(this.getFilCount(), B.getColCount());
 
-        for (int i = 0; i < this.getFilas(); i++)
-            for (int j = 0; j < this.getColumnas(); j++)
-                aux = this.getValor(i, j) + aux;
-
-        return aux == 0;
-    }
-
-    public boolean esUno() {
-        int aux = 0;
-        
-
-        for (int i = 0; i < this.getFilas(); i++)
-            for (int j = 0; j < this.getColumnas(); j++)
-                aux = this.getValor(i, j) + aux;
-
-        return aux == 1;
-    }
-
-    public String toString() {
-        String texto = "";
-        for (int i = 0; i < this.getFilas(); i++) {
-            for (int j = 0; j < this.getColumnas(); j++) {
-                texto += this.m[i][j] + " ";
-            }
-            texto += "\n";
+        if (this.getColCount() != B.getFilCount()) {
+            throw new RuntimeException("Dimensiones no compatibles.");
         }
-        return texto;
+
+        for (int i = 0; i < aux.getFilCount(); i++) {
+            for (int j = 0; j < aux.getColCount(); j++) {
+                for (int k = 0; k < this.getColCount(); k++)
+                    aux.setValor(i, j, (int) (aux.getValor(i, j) + (this.getValor(i, k) * B.getValor(k, j))));
+
+            }
+        }
+        return aux;
+    }
+
+    public void sumar(Matriz B) {
+        if (B.getFilCount() != this.getFilCount() || B.getColCount() != this.getColCount()) {
+            throw new RuntimeException("Dimensiones incompatibles");
+        }
+
+        for (int i = 0; i < this.getFilCount(); i++) {
+            for (int j = 0; j < this.getColCount(); j++) {
+                this.setValor(i, j, (int) (this.getValor(i, j) + B.getValor(i, j)));
+            }
+        }
+    }
+
+    public void imprimir() {
+        // Imprimimos matriz
+        System.out.println("Imprimimos la matriz");
+        System.out.println();
+
+
+        for (int aux = 0; aux < this.getFilCount(); aux++) {
+            for (int aux1 = 0; aux1 < this.getColCount(); aux1++) {
+                System.out.print(" " + this.matriz[aux][aux1]);
+            }
+            System.out.println();
+        }
+    }
+
+
+    public int[][] getMatriz() {
+        return this.matriz;
+    }
+
+    public double getValor(int fila, int columna) {
+        return this.matriz[fila][columna];
+    }
+
+    public void setValor(int fila, int columna, int valor) {
+        this.matriz[fila][columna] = valor;
+    }
+
+    public int getFilCount() {
+        return this.matriz.length;
+    }
+
+    public int getColCount() {
+        return this.matriz[0].length;
+    }
+
+    // COLOCA 0 EN TODOS LOS ELEMENTOS DE LA MATRIZ
+    public void clear() {
+        for (int i = 0; i < this.getFilCount(); i++) {
+            for (int j = 0; j < this.getColCount(); j++) {
+                this.setValor(i, j, 0);
+            }
+        }
     }
 }

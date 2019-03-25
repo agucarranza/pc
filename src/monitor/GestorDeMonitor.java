@@ -1,21 +1,21 @@
 package monitor;
 
+import java.util.concurrent.Semaphore;
+
 public class GestorDeMonitor {
 
-    private boolean k;
-    private Mutex mutex;
     private RdP red;
+    private Semaphore mutex;
 
 
+    public GestorDeMonitor(RdP red) {
 
-    public GestorDeMonitor() {
-
-        //m.acquire();
-
+        this.red = red;
+        mutex = new Semaphore(1, true);
     }
 
-    public void dispararTransicion() {
-        // mutex.acquire();
+    public void dispararTransicion(int transicion) throws InterruptedException {
+        mutex.acquire();
 
     }
 
