@@ -1,9 +1,17 @@
+import monitor.RdP;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        //System.out.println("Hello World!!");
+        RdP red = new RdP("./petri-nets/incidencia.csv",
+                "./petri-nets/marcado.csv",
+                "./petri-nets/inhibicion.csv");
 
-        //  GestorDeMonitor gestor = new GestorDeMonitor();
+        // red.sensibilizadas().toString();
+
+        System.out.println(red.sensibilizadas().toString());
+
+
     }
 }
