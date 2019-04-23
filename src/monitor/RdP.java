@@ -59,7 +59,19 @@ public class RdP {
         return null;
     }
 
+    /*
+    disparar() utiliza la funcion de estado para generar un nuevo estado a partir del
+    actual.
+    Devuelve k = true cuando pudo disparar una transicion. False cuando no encontró
+    ninguna transición para disparar en sensibilizadas ni en las colas.
+     */
     public boolean disparar() {
+
+        RealVector nuevoEstado;
+        RealVector viejoEstado;
+        // Real Vector enCola;
+        RealVector m;
+
 
         return k;
     }
@@ -79,7 +91,7 @@ public class RdP {
         RealMatrix disparo = new Array2DRowRealMatrix(transiciones, 1);
         RealMatrix marcado = marcadoInicial.transpose();
 
-        for (int k = 0; k < disparo.getRowDimension(); k++) { //Dispara todas las transiciones
+        for (int k = 0; k < transiciones; k++) { //Dispara todas las transiciones
 
             disparo.setEntry(k, 0, 1);
 

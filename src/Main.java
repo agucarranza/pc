@@ -1,3 +1,4 @@
+import monitor.GestorDeMonitor;
 import monitor.RdP;
 
 public class Main {
@@ -8,9 +9,14 @@ public class Main {
                 "./petri-nets/marcado.csv",
                 "./petri-nets/inhibicion.csv");
 
-        // red.sensibilizadas().toString();
+        GestorDeMonitor monitor = new GestorDeMonitor(red);
 
-        System.out.println(red.sensibilizadas().toString());
+        
+        try {
+            monitor.dispararTransicion(0);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }

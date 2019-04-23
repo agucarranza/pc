@@ -17,3 +17,10 @@ M1 = M0.' + I * disparo.'
 % Para que una transición este habilitada, necesito que 
 % cuando quiera disparar, el marcado no me de negativo.
 % El numero negativo indica la cantidad de tokens que me falta.
+
+vs = [1 0 1 0];
+vc = [1 1 0 0];
+
+for
+
+
