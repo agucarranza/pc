@@ -15,18 +15,15 @@ public class RdP {
     private int plazas;
     private int transiciones;
     private RealMatrix incidencia;
-    private RealMatrix marcadoInicial;
+    private RealMatrix marcadoActual;
     private RealMatrix inhibicion;
-    private RealVector sensibilizadas;
-
-    private boolean k;
 
     public RdP(String incidenceFile,
                String markingFile,
                String inhibitionFile) {
 
         incidencia = parseFile(incidenceFile);
-        marcadoInicial = parseFile(markingFile);
+        marcadoActual = parseFile(markingFile); //cargo el marcado inicial
         inhibicion = parseFile(inhibitionFile);
         plazas = incidencia.getRowDimension();
         transiciones = incidencia.getColumnDimension();
@@ -64,16 +61,22 @@ public class RdP {
     actual.
     Devuelve k = true cuando pudo disparar una transicion. False cuando no encontró
     ninguna transición para disparar en sensibilizadas ni en las colas.
+    NO ESTA TERMINADA.
+    ACA ESTOY TRABAJANDO. AGUSTIN
      */
-    public boolean disparar() {
 
-        RealVector nuevoEstado;
-        RealVector viejoEstado;
-        // Real Vector enCola;
-        RealVector m;
+    public boolean disparar(int transicion) {
 
+        boolean k = false;
+        RealMatrix marcadoNuevo;
+        RealMatrix disparo = getVectorDisparo(transicion);
+        RealMatrix marcado = marcadoActual.transpose();
 
+        marcadoNuevo = marcado.add(incidencia.multiply(disparo));
+        marcadoActual = marcadoNuevo.transpose();
+        k = true;
         return k;
+
     }
 
     /*
@@ -89,7 +92,7 @@ public class RdP {
         RealVector vector;
         RealVector vector_sensibilizadas = new ArrayRealVector(transiciones);
         RealMatrix disparo = new Array2DRowRealMatrix(transiciones, 1);
-        RealMatrix marcado = marcadoInicial.transpose();
+        RealMatrix marcado = marcadoActual.transpose();
 
         for (int k = 0; k < transiciones; k++) { //Dispara todas las transiciones
 
@@ -105,7 +108,22 @@ public class RdP {
         return vector_sensibilizadas;
     }
 
+    /*
+    Este metodo crea un vector con todos los valores ceros salvo el valor que le pase
+    por el parametro transicion. Se usa en el metodo disparar para implementar la ecuacion de estado.
+     */
+
+    public RealMatrix getVectorDisparo (int transicion) {
+        RealMatrix disparo = new Array2DRowRealMatrix(transiciones,1);
+        disparo.setEntry(transicion,0,1);
+        return disparo;
+    }
+
     public int getTransiciones() {
         return transiciones;
+    }
+
+    public RealMatrix getMarcadoActual() {
+    return marcadoActual;
     }
 }

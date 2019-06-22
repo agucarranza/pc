@@ -27,7 +27,7 @@ public class GestorDeMonitor {
         k = true;
 
         while (k==true) {
-         // k = red.disparar();
+         // k = red.disparar(transicion);
             if (k==true) {
                 RealVector v_sensibilizadas = red.sensibilizadas();
              // RealVector v_colas = colas.quienesEstan();
@@ -38,6 +38,10 @@ public class GestorDeMonitor {
 
                 System.out.println(isCero(m));
             }
+          //  System.out.println(red.getVectorDisparo(0).toString());
+            System.out.println(red.getMarcadoActual().toString());
+            red.disparar(0);
+            System.out.println(red.getMarcadoActual().toString());
             break;
         }
     }
