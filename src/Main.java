@@ -11,7 +11,7 @@ public class Main {
 
         GestorDeMonitor monitor = new GestorDeMonitor(red);
 
-        
+
         try {
             monitor.dispararTransicion(0);
         } catch (InterruptedException e) {

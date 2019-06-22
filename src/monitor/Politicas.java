@@ -8,10 +8,13 @@ public class Politicas {
     }
 
 
-    public RealVector cual(RealVector vector) {
+    public int cual(RealVector vector) {
 
+        if (vector.getEntry(0)==1)
+            return 0;
 
-        return vector;
+        return -1;
+        }
     }
 
-}
+

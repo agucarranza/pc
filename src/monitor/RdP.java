@@ -104,4 +104,8 @@ public class RdP {
         }
         return vector_sensibilizadas;
     }
+
+    public int getTransiciones() {
+        return transiciones;
+    }
 }

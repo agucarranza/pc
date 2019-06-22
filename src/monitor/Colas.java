@@ -1,45 +1,45 @@
 package monitor;
 
-import java.util.concurrent.Semaphore;
+import org.apache.commons.math3.linear.ArrayRealVector;
+import org.apache.commons.math3.linear.RealVector;
 
-//import archivos.Matriz;
+import java.util.concurrent.Semaphore;
 
 public class Colas {
 
-    private int TRANS;
-    private Semaphore[] colas;
+	private Semaphore[] arregloSemaphores;
 
-    public Colas(int TRANS) {
-        this.TRANS = TRANS;
-        colas = new Semaphore[TRANS];
-        for (int i = 0; i < TRANS; i++) {
-            colas[i] = new Semaphore(0, true);
+public Colas(int tamano) {
+
+	arregloSemaphores = new Semaphore[tamano];
+
+		for (int i = 0; i < tamano; i++) {
+			arregloSemaphores[i] = new Semaphore(0, true);
+		}
+	}
+
+	protected boolean desencolar(int i) throws InterruptedException {
+		if (arregloSemaphores[i] != null) {
+			arregloSemaphores[i].release();
+			return true;
+		}
+		return false;
+	}
+
+    protected RealVector quienesEstan() {
+    RealVector Vc = new ArrayRealVector(arregloSemaphores.length);
+    Vc.set(0);
+        for (int i = 0; i < arregloSemaphores.length; i++) {
+            if (arregloSemaphores[i].getQueueLength() != 0)
+                Vc.setEntry(i,1);
         }
+    return Vc;
     }
 
-    public void adquirirCola(int t) {
-        try {
-            colas[t].acquire();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void liberarHilo(int t) {
-        colas[t].release();
-    }
-
-    public Matriz quienesEstan() {
-        Matriz enCola = new Matriz(1, TRANS);
-
-        for (int i = 0; i < TRANS; i++) {
-            if (colas[i].hasQueuedThreads()) {
-                enCola.setValor(0, i, 1);
-            } else {
-                enCola.setValor(0, i, 0);
-            }
-        }
-        return enCola;
-    }
+	protected void encolar(int i) throws InterruptedException {
+		if (arregloSemaphores[i] != null) {
+			arregloSemaphores[i].acquire();
+		}
+	}
 
 }

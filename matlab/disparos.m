@@ -21,6 +21,9 @@ M1 = M0.' + I * disparo.'
 vs = [1 0 1 0];
 vc = [1 1 0 0];
 
-for
+vs.*vc
+
+% Para hacer un AND en un Array binario es equivalente a multiplicar
+% elemento a elemento.
 
 
