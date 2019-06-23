@@ -25,13 +25,12 @@ public class GestorDeMonitor {
         k = true;
         System.out.println(red.getMarcadoActual().toString());
 
-        while (red.disparar(0)) {
+        while (k) {
+            k = red.disparar(transicion);
             if (k) {
                 RealVector v_sensibilizadas = red.sensibilizadas();
                 RealVector v_colas = colas.quienesEstan();
                 m = v_sensibilizadas.ebeMultiply(v_colas);      //Aca se hace el and
-                System.out.println("m: "+m.toString());
-                System.out.println(isCero(m));
                 if (isCero(m))
                     k = false;
                 else {
@@ -40,16 +39,15 @@ public class GestorDeMonitor {
                 }
             } else {
                 mutex.release();
+                // Ver como saber si funciona el encolar.
                 colas.encolar(transicion);
             }
-            System.out.println(red.getVectorDisparo(0).toString());
             System.out.println(red.getMarcadoActual().toString());
-            break;
         }
         mutex.release();
     }
 /*
-Esta función revisa todo el vector y devuelve true si es cero en todos sus componentes,
+Esta función revisa el vector entero y devuelve true si es cero en todos sus componentes,
 si algún componente no es cero, devuelve false.
  */
 
@@ -59,6 +57,10 @@ si algún componente no es cero, devuelve false.
             return false;
         }
     return true;
+    }
+
+    public Colas getColas() {
+        return colas;
     }
 
 }

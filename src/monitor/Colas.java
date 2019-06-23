@@ -18,7 +18,7 @@ public Colas(int tamano) {
 		}
 	}
 
-	protected boolean desencolar(int i) throws InterruptedException {
+	public boolean desencolar(int i) throws InterruptedException {
 		if (arregloSemaphores[i] != null) {
 			arregloSemaphores[i].release();
 			return true;
@@ -26,7 +26,7 @@ public Colas(int tamano) {
 		return false;
 	}
 
-    protected RealVector quienesEstan() {
+	public RealVector quienesEstan() {
     RealVector Vc = new ArrayRealVector(arregloSemaphores.length);
     Vc.set(0);
         for (int i = 0; i < arregloSemaphores.length; i++) {
@@ -36,7 +36,7 @@ public Colas(int tamano) {
     return Vc;
     }
 
-	protected void encolar(int i) throws InterruptedException {
+	public void encolar(int i) throws InterruptedException {
 		if (arregloSemaphores[i] != null) {
 			arregloSemaphores[i].acquire();
 		}
