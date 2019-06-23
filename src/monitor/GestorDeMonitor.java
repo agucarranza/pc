@@ -1,6 +1,5 @@
 package monitor;
 
-import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.RealVector;
 
 import java.util.concurrent.Semaphore;
@@ -13,7 +12,6 @@ public class GestorDeMonitor {
     private RealVector m;
     private Colas colas;
 
-
     public GestorDeMonitor(RdP red) {
 
         this.red = red;
@@ -25,32 +23,37 @@ public class GestorDeMonitor {
 
         mutex.acquire();
         k = true;
+        System.out.println(red.getMarcadoActual().toString());
 
-        while (k==true) {
-         // k = red.disparar(transicion);
-            if (k==true) {
+        while (red.disparar(0)) {
+            if (k) {
                 RealVector v_sensibilizadas = red.sensibilizadas();
-             // RealVector v_colas = colas.quienesEstan();
-                double[] d = {1, 1, 0, 0};
-                RealVector v_colas = new ArrayRealVector(d);
+                RealVector v_colas = colas.quienesEstan();
                 m = v_sensibilizadas.ebeMultiply(v_colas);      //Aca se hace el and
                 System.out.println("m: "+m.toString());
-
                 System.out.println(isCero(m));
+                if (isCero(m))
+                    k = false;
+                else {
+                    //POLITICAS
+                    colas.desencolar(transicion);
+                }
+            } else {
+                mutex.release();
+                colas.encolar(transicion);
             }
-          //  System.out.println(red.getVectorDisparo(0).toString());
-            System.out.println(red.getMarcadoActual().toString());
-            red.disparar(0);
+            System.out.println(red.getVectorDisparo(0).toString());
             System.out.println(red.getMarcadoActual().toString());
             break;
         }
+        mutex.release();
     }
 /*
-Esta funcion revisa todo el vector y devuelve true si es cero en todos sus componentes,
-si algun componente no es cero, devuelve false.
+Esta función revisa todo el vector y devuelve true si es cero en todos sus componentes,
+si algún componente no es cero, devuelve false.
  */
 
-public boolean isCero(RealVector vector) {
+    private boolean isCero(RealVector vector) {
     for (double d: vector.toArray()) {
         if (d!=0)
             return false;

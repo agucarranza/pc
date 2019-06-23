@@ -57,7 +57,7 @@ public class RdP {
     }
 
     /*
-    disparar() utiliza la funcion de estado para generar un nuevo estado a partir del
+    disparar() utiliza la función de estado para generar un nuevo estado a partir del
     actual.
     Devuelve k = true cuando pudo disparar una transicion. False cuando no encontró
     ninguna transición para disparar en sensibilizadas ni en las colas.
@@ -65,24 +65,25 @@ public class RdP {
     ACA ESTOY TRABAJANDO. AGUSTIN
      */
 
-    public boolean disparar(int transicion) {
+    public boolean disparar(int transicion) throws RuntimeException {
 
-        boolean k = false;
+        if ((transicion < 0) || (transicion > transiciones))
+            throw new RuntimeException("Numero de transicion fuera de limites");
+        if (sensibilizadas().getEntry(transicion) != 1)
+            return false;
+
         RealMatrix marcadoNuevo;
         RealMatrix disparo = getVectorDisparo(transicion);
         RealMatrix marcado = marcadoActual.transpose();
-
         marcadoNuevo = marcado.add(incidencia.multiply(disparo));
         marcadoActual = marcadoNuevo.transpose();
-        k = true;
-        return k;
-
+        return true;
     }
 
     /*
-    Este metodo utiliza la ecuacion de estado de la RDP para intentar disparar
+    Este método utiliza la ecuación de estado de la RDP para intentar disparar
     todas las transiciones (de a una por vez) con el bucle. Aquellas cuyo nuevo estado
-    es mayor o igual que 0, estan habilitadas. Las demás estan deshabilitadas. Al principio
+    es mayor o igual que 0, están habilitadas. Las demás están deshabilitadas. Al principio
     del bucle, pongo un uno en la transicion que quiero disparar, y al final lo saco para
     que luego el bucle lo agregue en la transicion siguiente.
      */
@@ -109,8 +110,8 @@ public class RdP {
     }
 
     /*
-    Este metodo crea un vector con todos los valores ceros salvo el valor que le pase
-    por el parametro transicion. Se usa en el metodo disparar para implementar la ecuacion de estado.
+    Este método crea un vector con todos los valores ceros salvo el valor que le pase
+    por el parámetro transicion. Se usa en el método disparar para implementar la ecuación de estado.
      */
 
     public RealMatrix getVectorDisparo (int transicion) {
@@ -124,6 +125,6 @@ public class RdP {
     }
 
     public RealMatrix getMarcadoActual() {
-    return marcadoActual;
+        return marcadoActual;
     }
 }
