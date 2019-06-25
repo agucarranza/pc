@@ -20,17 +20,19 @@ public class GestorDeMonitor {
     }
 
     public void dispararTransicion(int transicion) throws InterruptedException {
-
+        System.out.println("Cola del mutex:\t"+mutex.getQueueLength());
         mutex.acquire();
         k = true;
-        System.out.println(red.getMarcadoActual().toString());
 
         while (k) {
             k = red.disparar(transicion);
+            System.out.println("marcado actual:\t"+red.getMarcadoActual().toString()+Thread.currentThread().getName());
             if (k) {
                 RealVector v_sensibilizadas = red.sensibilizadas();
+                System.out.println("sensibilizadas:\t"+v_sensibilizadas.toString()+Thread.currentThread().getName());
                 RealVector v_colas = colas.quienesEstan();
                 m = v_sensibilizadas.ebeMultiply(v_colas);      //Aca se hace el and
+                System.out.println("m:\t\t\t\t"+m.toString()+Thread.currentThread().getName());
                 if (isCero(m))
                     k = false;
                 else {
@@ -42,7 +44,7 @@ public class GestorDeMonitor {
                 // Ver como saber si funciona el encolar.
                 colas.encolar(transicion);
             }
-            System.out.println(red.getMarcadoActual().toString());
+            //System.out.println(red.getMarcadoActual().toString());
         }
         mutex.release();
     }

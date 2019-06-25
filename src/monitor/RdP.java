@@ -27,6 +27,7 @@ public class RdP {
         inhibicion = parseFile(inhibitionFile);
         plazas = incidencia.getRowDimension();
         transiciones = incidencia.getColumnDimension();
+        System.out.println("marcado INICIAL:"+getMarcadoActual().toString()+Thread.currentThread().getName());
     }
 
     public RealMatrix parseFile(String fileName) {
@@ -114,7 +115,7 @@ public class RdP {
     por el parámetro transicion. Se usa en el método disparar para implementar la ecuación de estado.
      */
 
-    public RealMatrix getVectorDisparo (int transicion) {
+    private RealMatrix getVectorDisparo(int transicion) {
         RealMatrix disparo = new Array2DRowRealMatrix(transiciones,1);
         disparo.setEntry(transicion,0,1);
         return disparo;
