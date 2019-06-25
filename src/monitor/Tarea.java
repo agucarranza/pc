@@ -2,26 +2,23 @@ package monitor;
 
 public class Tarea implements Runnable {
 
-    private String nombre;
     private GestorDeMonitor monitor;
+    private int transicion;
 
-    public Tarea(GestorDeMonitor monitor) {
+    public Tarea(GestorDeMonitor monitor, int transicion) {
         this.monitor = monitor;
-
+        this.transicion = transicion;
     }
 
     @Override
     public void run() {
         try {
-            nombre = Thread.currentThread().getName();
-            System.out.println("Soy el thread: " + nombre);
-            monitor.dispararTransicion(0);
+            Thread.sleep(1000);
+            monitor.dispararTransicion(transicion);
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public String getNombre() {
-        return nombre;
-    }
 }

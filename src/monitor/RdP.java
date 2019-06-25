@@ -17,16 +17,20 @@ public class RdP {
     private RealMatrix incidencia;
     private RealMatrix marcadoActual;
     private RealMatrix inhibicion;
+    private RealMatrix politica;
 
     public RdP(String incidenceFile,
                String markingFile,
-               String inhibitionFile) {
+               String inhibitionFile,
+               String policyFile) {
 
         incidencia = parseFile(incidenceFile);
         marcadoActual = parseFile(markingFile); //cargo el marcado inicial
         inhibicion = parseFile(inhibitionFile);
+        politica = parseFile(policyFile);
         plazas = incidencia.getRowDimension();
         transiciones = incidencia.getColumnDimension();
+        System.out.println("marcado INICIAL:"+getMarcadoActual().toString()+Thread.currentThread().getName());
     }
 
     public RealMatrix parseFile(String fileName) {
@@ -114,12 +118,41 @@ public class RdP {
     por el parámetro transicion. Se usa en el método disparar para implementar la ecuación de estado.
      */
 
-    public RealMatrix getVectorDisparo (int transicion) {
+    private RealMatrix getVectorDisparo(int transicion) {
         RealMatrix disparo = new Array2DRowRealMatrix(transiciones,1);
         disparo.setEntry(transicion,0,1);
         return disparo;
     }
 
+    /*
+     * Este metodo recibe el vector de sensibilizadas como parametro.
+     * Se posmultiplica con la matriz de politica previamente cargado.
+     * De ese resultado, elijo la primera transicion que encuentre y borro las otras.
+     * Luego la posmultiplico con la matriz de politica nuevamente y consigo el
+     * el indice de la transicion a disparar.
+     */
+
+    public int politica(RealVector vector) {
+
+        RealMatrix politica = this.politica;
+        RealVector t1 = politica.operate(vector);
+        System.out.println("MPolitica:\t" + politica.toString());
+        System.out.println("MatrizT1:\t" + t1.toString());
+        RealVector t2 = new ArrayRealVector(t1.getDimension());
+        int i;
+        for (i = 0; i < t1.getDimension(); i++) {
+            if (t1.getEntry(i) > 0) {
+                t2.setEntry(i, 1);
+                break;
+            }
+        }
+        System.out.println("MatrizT2:\t" + t2.toString());
+        RealVector td = politica.transpose().operate(t2);
+        System.out.println("MatrizTd:\t" + td.toString());
+        return td.getMaxIndex();
+
+    }
+    
     public int getTransiciones() {
         return transiciones;
     }
