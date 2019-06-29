@@ -7,7 +7,7 @@ import java.util.concurrent.Semaphore;
 public class GestorDeMonitor {
 
     private RdP red;
-    private Semaphore mutex;
+    public Semaphore mutex;
     private boolean k;
     private RealVector m;
     private Colas colas;
@@ -19,34 +19,33 @@ public class GestorDeMonitor {
         colas = new Colas(red.getTransiciones());
     }
 
+    /*
+     * Poner comentario de cómo funciona la función Disparar transición.
+     *
+     */
+
     public void dispararTransicion(int transicion) throws InterruptedException {
-        System.out.println("Cola del mutex:\t"+mutex.getQueueLength());
+        //
         mutex.acquire();
         k = true;
-
         while (k) {
+            System.out.println("Voy a disparar la transicion:" + transicion);
             k = red.disparar(transicion);
-            System.out.println("marcado actual:\t"+red.getMarcadoActual().toString()+Thread.currentThread().getName());
             if (k) {
                 RealVector v_sensibilizadas = red.sensibilizadas();
                 System.out.println("sensibilizadas:\t"+v_sensibilizadas.toString()+Thread.currentThread().getName());
                 RealVector v_colas = colas.quienesEstan();
-                m = v_sensibilizadas.ebeMultiply(v_colas);      //Aca se hace el and
-                System.out.println("m:\t\t\t\t"+m.toString()+Thread.currentThread().getName());
+                m = v_sensibilizadas.ebeMultiply(v_colas);
                 if (isCero(m))
                     k = false;
                 else {
-                    //POLITICAS
                     int p = red.politica(v_sensibilizadas);
-                    colas.desencolar(p); //aca poner el indice de viene de las politicas
-                    
+                    colas.desencolar(p);
                 }
             } else {
                 mutex.release();
-                // Ver como saber si funciona el encolar.
                 colas.encolar(transicion);
             }
-            //System.out.println(red.getMarcadoActual().toString());
         }
         mutex.release();
     }

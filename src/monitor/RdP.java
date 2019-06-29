@@ -33,7 +33,7 @@ public class RdP {
         System.out.println("marcado INICIAL:"+getMarcadoActual().toString()+Thread.currentThread().getName());
     }
 
-    public RealMatrix parseFile(String fileName) {
+    private RealMatrix parseFile(String fileName) {
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -125,7 +125,7 @@ public class RdP {
     }
 
     /*
-     * Este metodo recibe el vector de sensibilizadas como parametro.
+     * Este método recibe el vector de sensibilizadas como parámetro.
      * Se posmultiplica con la matriz de politica previamente cargado.
      * De ese resultado, elijo la primera transicion que encuentre y borro las otras.
      * Luego la posmultiplico con la matriz de politica nuevamente y consigo el
@@ -136,19 +136,18 @@ public class RdP {
 
         RealMatrix politica = this.politica;
         RealVector t1 = politica.operate(vector);
-        System.out.println("MPolitica:\t" + politica.toString());
-        System.out.println("MatrizT1:\t" + t1.toString());
+        //System.out.println("MPolitica:\t" + politica.toString());
+        //System.out.println("MatrizT1:\t" + t1.toString());
         RealVector t2 = new ArrayRealVector(t1.getDimension());
-        int i;
-        for (i = 0; i < t1.getDimension(); i++) {
+        for (int i = 0; i < t1.getDimension(); i++) {
             if (t1.getEntry(i) > 0) {
                 t2.setEntry(i, 1);
                 break;
             }
         }
-        System.out.println("MatrizT2:\t" + t2.toString());
+        //System.out.println("MatrizT2:\t" + t2.toString());
         RealVector td = politica.transpose().operate(t2);
-        System.out.println("MatrizTd:\t" + td.toString());
+        //System.out.println("MatrizTd:\t" + td.toString());
         return td.getMaxIndex();
 
     }
