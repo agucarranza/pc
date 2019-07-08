@@ -1,5 +1,7 @@
 package monitor;
 
+import static java.lang.Thread.*;
+
 public class Tarea implements Runnable {
 
     private GestorDeMonitor monitor;
@@ -13,11 +15,14 @@ public class Tarea implements Runnable {
     @Override
     public void run() {
         try {
-            while(true)
-                monitor.dispararTransicion(transicion);
+            while(true){
+                monitor.dispararTransicion2(transicion);
+               // Thread.sleep(10);
+                }
         }
         catch (InterruptedException e) {
-            System.out.println("Termine pero "+Thread.currentThread().getName()+" quedo en la cola.");
+            System.out.println(e);
+           // System.out.println("Termine pero "+ currentThread().getName()+" quedo en la cola.");
         }
     }
 }

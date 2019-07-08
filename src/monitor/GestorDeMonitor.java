@@ -27,25 +27,60 @@ public class GestorDeMonitor {
 
     public void dispararTransicion(int transicion) throws InterruptedException {
         mutex.acquire();
+
+        if (mutex.availablePermits()!=0)
+            throw new InterruptedException("Mutex Entrada Mal, Permiso es: "+mutex.availablePermits()+"\t"+Thread.currentThread().getName()+"\tT:"+transicion);
+
         k = true;
         while (k) {
+            //k = true;
             k = red.disparar(transicion);
-            Log.log.log(Level.INFO, "DISPARE!\t Marcado: "+red.getMarcadoActual().toString().substring(20)+"\t"+Thread.currentThread().getName()+"\tT:"+transicion);
             if (k) {
+                Log.log.log(Level.INFO, "DISPARE!\t Marcado: "+red.getMarcadoActual().toString().substring(20)+"\t"+Thread.currentThread().getName()+"\tT:"+transicion);
                 RealVector v_sensibilizadas = red.sensibilizadas();
                 RealVector v_colas = colas.quienesEstan();
                 m = v_sensibilizadas.ebeMultiply(v_colas);
                 if (isCero(m))
                     k = false;
                 else {
-                    int p = red.politica(v_sensibilizadas);
+                    int p = red.politica(m);
                     colas.desencolar(p);
+                    mutex.acquire();
+                    Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
                 }
             } else {
                 mutex.release();
                 colas.encolar(transicion);
+
             }
         }
+        mutex.release();
+        if (mutex.availablePermits()!=1)
+            throw new InterruptedException("Mutex Salida Mal, Permiso es: "+mutex.availablePermits()+"\t"+Thread.currentThread().getName()+"\tT:"+transicion);
+    }
+
+    /*
+    Prueba de función para ver cómo hacer andar bien el mutex. Aparentemente en la función
+    anterior, cuando un hilo despierta a otro, no alcanza a salir del monitor despues de liberar
+    el mutex, y entra otro. Entonces quedan dos hilos adentro.
+     */
+
+    public void dispararTransicion2(int t) throws InterruptedException {
+        mutex.acquire();
+
+        while (!red.disparar(t)) {
+            mutex.release();
+            colas.encolar(t);
+        }
+        Log.log.log(Level.INFO, "DISPARE!\t Marcado: "+red.getMarcadoActual().toString().substring(20)+"\t"+Thread.currentThread().getName()+"\tT:"+t);
+        RealVector v_sensibilizadas = red.sensibilizadas();
+        RealVector v_colas = colas.quienesEstan();
+        m = v_sensibilizadas.ebeMultiply(v_colas);
+        if (!isCero(m))
+            colas.desencolar(red.politica(m));
+
+
+
         mutex.release();
     }
 

@@ -77,7 +77,7 @@ public class RdP {
      */
 
     public boolean disparar(int transicion) throws RuntimeException {
-        try {
+        //try {
         if ((transicion < 0) || (transicion > transiciones))
             throw new RuntimeException("Numero de transicion fuera de limites");
         if (sensibilizadas().getEntry(transicion) != 1)
@@ -89,10 +89,10 @@ public class RdP {
         marcadoNuevo = marcado.add(incidencia.multiply(disparo));
         marcadoActual = marcadoNuevo.transpose();
 
-        Thread.sleep(10);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        //Thread.sleep(10);
+        //} catch (InterruptedException e) {
+        //    e.printStackTrace();
+        //}
         return true;
     }
 

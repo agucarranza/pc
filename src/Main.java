@@ -32,12 +32,12 @@ public class Main {
         hilo2.start();
         hilo3.start();
 
-        Thread.sleep(5000);
-        hilo0.interrupt();
-        hilo1.interrupt();
-        hilo2.interrupt();
-        hilo3.interrupt();
-        System.exit(0);
+       // Thread.sleep(5000);
+//        hilo0.interrupt();
+//        hilo1.interrupt();
+//        hilo2.interrupt();
+//        hilo3.interrupt();
+//        System.exit(0);
 
     }
 }
