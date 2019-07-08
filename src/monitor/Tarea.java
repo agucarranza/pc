@@ -13,14 +13,11 @@ public class Tarea implements Runnable {
     @Override
     public void run() {
         try {
-            //Thread.sleep(1000);
-       //    while (true)
-            monitor.dispararTransicion(transicion);
-         //   System.out.println("Se murio " + Thread.currentThread().getName());
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            while(true)
+                monitor.dispararTransicion(transicion);
+        }
+        catch (InterruptedException e) {
+            System.out.println("Termine pero "+Thread.currentThread().getName()+" quedo en la cola.");
         }
     }
-
 }

@@ -1,8 +1,11 @@
 import monitor.GestorDeMonitor;
 import monitor.RdP;
 import monitor.Tarea;
+import log.Log;
 
 public class Main {
+
+
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -10,6 +13,7 @@ public class Main {
                            "./petri-nets/marcado.csv",
                 "./petri-nets/inhibicion.csv",
                 "./petri-nets/politicas.csv");
+       new Log();
 
         GestorDeMonitor monitor = new GestorDeMonitor(red);
         Tarea tarea0 = new Tarea(monitor,0);
@@ -17,30 +21,23 @@ public class Main {
         Tarea tarea2 = new Tarea(monitor,2);
         Tarea tarea3 = new Tarea(monitor,3);
 
-
         // Ver como asignar las transiciones a cada tarea.
 
         Thread hilo0 = new Thread(tarea0);
         Thread hilo1 = new Thread(tarea1);
         Thread hilo2 = new Thread(tarea2);
         Thread hilo3 = new Thread(tarea3);
+        hilo0.start();
+        hilo1.start();
+        hilo2.start();
+        hilo3.start();
 
-
-     //   hilo0.start();
-     //   hilo1.start();
-     //   hilo2.start();
-     //   hilo3.start();
-        System.out.println(red.getMarcadoActual().toString());
-        red.disparar(2);
-        System.out.println(red.getMarcadoActual().toString());
-
-
-        /*while (true) {
-            //   System.out.println("Cola:\t\t\t" + monitor.getColas().quienesEstan().toString() + Thread.currentThread().getName());
-            //   System.out.println("Cola del mutex:\t" + monitor.mutex.getQueueLength() + "\t sensibilizadas: " + red.sensibilizadas().toString()+ Thread.currentThread().getName());
-            //   Thread.sleep(1000);
-        }
-*/
+        Thread.sleep(5000);
+        hilo0.interrupt();
+        hilo1.interrupt();
+        hilo2.interrupt();
+        hilo3.interrupt();
+        System.exit(0);
 
     }
 }

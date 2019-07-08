@@ -1,5 +1,6 @@
 package monitor;
 
+import log.Log;
 import org.apache.commons.math3.linear.*;
 
 import java.io.BufferedReader;
@@ -8,6 +9,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.logging.Level;
+
+import static java.lang.Thread.*;
 
 
 public class RdP {
@@ -30,8 +34,13 @@ public class RdP {
         politica = parseFile(policyFile);
         plazas = incidencia.getRowDimension();
         transiciones = incidencia.getColumnDimension();
-      //  System.out.println("marcado INICIAL:"+getMarcadoActual().toString()+Thread.currentThread().getName());
+        Log.log.log(Level.INFO,"INICIO\t\t Marcado: "+getMarcadoActual().toString().substring(20)+"\t"+ currentThread().getName());
     }
+
+    /*
+    Esta función abre el archivo que se le pasa por parámetro y retorna una RealMatrix con los datos. Descarta
+    la primer fila y la primer columna que son los índices de plazas y transiciones.
+     */
 
     private RealMatrix parseFile(String fileName) {
 
@@ -64,13 +73,11 @@ public class RdP {
     disparar() utiliza la función de estado para generar un nuevo estado a partir del
     actual.
     Devuelve k = true cuando pudo disparar una transicion. False cuando no encontró
-    ninguna transición para disparar en sensibilizadas ni en las colas.
-    NO ESTA TERMINADA.
-    ACA ESTOY TRABAJANDO. AGUSTIN
+    ninguna transición para disparar en sensibilizadas.
      */
 
     public boolean disparar(int transicion) throws RuntimeException {
-
+        try {
         if ((transicion < 0) || (transicion > transiciones))
             throw new RuntimeException("Numero de transicion fuera de limites");
         if (sensibilizadas().getEntry(transicion) != 1)
@@ -81,6 +88,11 @@ public class RdP {
         RealMatrix marcado = marcadoActual.transpose();
         marcadoNuevo = marcado.add(incidencia.multiply(disparo));
         marcadoActual = marcadoNuevo.transpose();
+
+        Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return true;
     }
 
@@ -100,14 +112,10 @@ public class RdP {
         RealMatrix marcado = marcadoActual.transpose();
 
         for (int k = 0; k < transiciones; k++) { //Dispara todas las transiciones
-
             disparo.setEntry(k, 0, 1);
-
             vector = marcado.add(incidencia.multiply(disparo)).getColumnVector(0);
-
             if (vector.getMinValue() >= 0)
                 vector_sensibilizadas.setEntry(k, 1);
-
             disparo.setEntry(k, 0, 0);
         }
         return vector_sensibilizadas;
@@ -136,8 +144,6 @@ public class RdP {
 
         RealMatrix politica = this.politica;
         RealVector t1 = politica.operate(vector);
-        //System.out.println("MPolitica:\t" + politica.toString());
-        //System.out.println("MatrizT1:\t" + t1.toString());
         RealVector t2 = new ArrayRealVector(t1.getDimension());
         for (int i = 0; i < t1.getDimension(); i++) {
             if (t1.getEntry(i) > 0) {
@@ -145,9 +151,7 @@ public class RdP {
                 break;
             }
         }
-        //System.out.println("MatrizT2:\t" + t2.toString());
         RealVector td = politica.transpose().operate(t2);
-        //System.out.println("MatrizTd:\t" + td.toString());
         return td.getMaxIndex();
 
     }

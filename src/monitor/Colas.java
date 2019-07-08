@@ -12,13 +12,13 @@ public class Colas {
 public Colas(int tamano) {
 
 	arregloSemaphores = new Semaphore[tamano];
-
 		for (int i = 0; i < tamano; i++) {
 			arregloSemaphores[i] = new Semaphore(0, true);
 		}
 	}
 
-	public boolean desencolar(int i) throws InterruptedException {
+	boolean desencolar(int i) throws InterruptedException {
+
 		if (arregloSemaphores[i] != null) {
 			arregloSemaphores[i].release();
 			return true;
@@ -27,6 +27,7 @@ public Colas(int tamano) {
 	}
 
 	public RealVector quienesEstan() {
+
     RealVector Vc = new ArrayRealVector(arregloSemaphores.length);
     Vc.set(0);
         for (int i = 0; i < arregloSemaphores.length; i++) {
@@ -36,7 +37,7 @@ public Colas(int tamano) {
     return Vc;
     }
 
-	public void encolar(int i) throws InterruptedException {
+	void encolar(int i) throws InterruptedException {
 		if (arregloSemaphores[i] != null) {
 			arregloSemaphores[i].acquire();
 		}
