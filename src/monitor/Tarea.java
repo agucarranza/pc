@@ -14,8 +14,9 @@ public class Tarea implements Runnable {
     public void run() {
         try {
             //Thread.sleep(1000);
+       //    while (true)
             monitor.dispararTransicion(transicion);
-            System.out.println("Se murio " + Thread.currentThread().getName());
+         //   System.out.println("Se murio " + Thread.currentThread().getName());
 
         } catch (InterruptedException e) {
             e.printStackTrace();

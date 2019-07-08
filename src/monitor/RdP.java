@@ -30,7 +30,7 @@ public class RdP {
         politica = parseFile(policyFile);
         plazas = incidencia.getRowDimension();
         transiciones = incidencia.getColumnDimension();
-        System.out.println("marcado INICIAL:"+getMarcadoActual().toString()+Thread.currentThread().getName());
+      //  System.out.println("marcado INICIAL:"+getMarcadoActual().toString()+Thread.currentThread().getName());
     }
 
     private RealMatrix parseFile(String fileName) {

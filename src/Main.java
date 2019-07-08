@@ -26,17 +26,21 @@ public class Main {
         Thread hilo3 = new Thread(tarea3);
 
 
-        hilo0.start();
-        hilo1.start();
-        hilo2.start();
-        hilo3.start();
+     //   hilo0.start();
+     //   hilo1.start();
+     //   hilo2.start();
+     //   hilo3.start();
+        System.out.println(red.getMarcadoActual().toString());
+        red.disparar(2);
+        System.out.println(red.getMarcadoActual().toString());
 
 
-        while (true) {
-            System.out.println("Cola:\t\t\t" + monitor.getColas().quienesEstan().toString() + Thread.currentThread().getName());
-            System.out.println("Cola del mutex:\t" + monitor.mutex.getQueueLength() + "\t sensibilizadas: " + red.sensibilizadas().toString());
-            Thread.sleep(1000);
+        /*while (true) {
+            //   System.out.println("Cola:\t\t\t" + monitor.getColas().quienesEstan().toString() + Thread.currentThread().getName());
+            //   System.out.println("Cola del mutex:\t" + monitor.mutex.getQueueLength() + "\t sensibilizadas: " + red.sensibilizadas().toString()+ Thread.currentThread().getName());
+            //   Thread.sleep(1000);
         }
+*/
 
     }
 }

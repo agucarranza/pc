@@ -29,8 +29,10 @@ public class GestorDeMonitor {
         mutex.acquire();
         k = true;
         while (k) {
-            System.out.println("Voy a disparar la transicion:" + transicion);
+            System.out.println("Voy a disparar la transicion:" + transicion+Thread.currentThread().getName());
+            System.out.println("El marcado es: "+red.getMarcadoActual().toString()+Thread.currentThread().getName());
             k = red.disparar(transicion);
+            System.out.println("DISPARE! El nuevo marcado es: "+red.getMarcadoActual().toString()+Thread.currentThread().getName());
             if (k) {
                 RealVector v_sensibilizadas = red.sensibilizadas();
                 System.out.println("sensibilizadas:\t"+v_sensibilizadas.toString()+Thread.currentThread().getName());
@@ -41,6 +43,7 @@ public class GestorDeMonitor {
                 else {
                     int p = red.politica(v_sensibilizadas);
                     colas.desencolar(p);
+                   // transicion = p;
                 }
             } else {
                 mutex.release();
