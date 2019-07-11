@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 
-import static java.lang.Thread.*;
+import static java.lang.Thread.currentThread;
 
 
 public class RdP {
@@ -88,11 +88,6 @@ public class RdP {
         RealMatrix marcado = marcadoActual.transpose();
         marcadoNuevo = marcado.add(incidencia.multiply(disparo));
         marcadoActual = marcadoNuevo.transpose();
-
-        //Thread.sleep(10);
-        //} catch (InterruptedException e) {
-        //    e.printStackTrace();
-        //}
         return true;
     }
 

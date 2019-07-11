@@ -1,6 +1,5 @@
 package monitor;
 
-import static java.lang.Thread.*;
 
 public class Tarea implements Runnable {
 
@@ -15,14 +14,13 @@ public class Tarea implements Runnable {
     @Override
     public void run() {
         try {
-            while(true){
-                monitor.dispararTransicion2(transicion);
-               // Thread.sleep(10);
+            for (int i =0;i<10000;i++) {
+                monitor.dispararTransicion3(transicion);
                 }
+          //  System.out.println(Thread.currentThread().getName()+" se murio");
         }
         catch (InterruptedException e) {
             System.out.println(e);
-           // System.out.println("Termine pero "+ currentThread().getName()+" quedo en la cola.");
         }
     }
 }

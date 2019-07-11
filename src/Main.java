@@ -1,7 +1,14 @@
 import monitor.GestorDeMonitor;
 import monitor.RdP;
 import monitor.Tarea;
+import monitor.Colas;
 import log.Log;
+import org.apache.commons.math3.exception.DimensionMismatchException;
+import org.apache.commons.math3.exception.NotPositiveException;
+import org.apache.commons.math3.exception.OutOfRangeException;
+import org.apache.commons.math3.linear.ArrayRealVector;
+
+import java.lang.reflect.Array;
 
 public class Main {
 
@@ -39,5 +46,20 @@ public class Main {
 //        hilo3.interrupt();
 //        System.exit(0);
 
-    }
-}
+        double d[] = {1,1,1,1};
+//        while (true) {
+//            if (monitor.getColas().quienesEstan().toString().equals(new ArrayRealVector(d).toString())) {
+//                monitor.getColas().desencolar(0);
+//                monitor.getColas().desencolar(1);
+//                monitor.getColas().desencolar(2);
+//                monitor.getColas().desencolar(3);
+//                System.out.println(hilo0.getName()+hilo0.getState().toString());
+//                System.out.println(hilo1.getName()+hilo1.getState().toString());
+//                System.out.println(hilo2.getName()+hilo2.getState().toString());
+//                System.out.println(hilo3.getName()+hilo3.getState().toString());
+
+            //System.out.println(monitor.getColas().quienesEstan().toString());
+//            Thread.sleep(1000);
+//                }
+            }
+        }
