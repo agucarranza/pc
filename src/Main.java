@@ -14,7 +14,6 @@ public class Main {
         RdP red = new RdP ( "./petri-nets/incidencia.csv",
                             "./petri-nets/marcado.csv",
                             "./petri-nets/inhibicion.csv",
-                            "./petri-nets/politicas.csv",
                             "./petri-nets/alfa.csv",
                             "./petri-nets/beta.csv");
        new Log();

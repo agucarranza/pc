@@ -15,7 +15,7 @@ public class Tarea implements Runnable {
         try {
             //for (int i=0;i<1;i++) {
             while(true) {
-                monitor.dispararTransicion2(transicion);
+                monitor.dispararTransicion(transicion);
             }
         }
         catch (InterruptedException e) {

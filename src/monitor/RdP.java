@@ -2,29 +2,19 @@ package monitor;
 
 import log.Log;
 import org.apache.commons.math3.linear.*;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
-
 import static java.lang.Thread.*;
-
 
 public class RdP {
 
-    private int plazas;
     private int transiciones;
-    private long ventana;
+    private double ventana;
     private RealMatrix incidencia;
     private RealMatrix marcadoActual;
     private RealMatrix inhibicion;
-    private RealMatrix politica;
     private RealVector alfa;
     private RealVector beta;
     private List<Double> timeStamp;
@@ -32,53 +22,18 @@ public class RdP {
     public RdP(String incidenceFile,
                String markingFile,
                String inhibitionFile,
-               String policyFile,
                String alfa,
                String beta) {
 
-        incidencia = parseFile(incidenceFile);
-        marcadoActual = parseFile(markingFile); //cargo el marcado inicial
-        inhibicion = parseFile(inhibitionFile);
-        politica = parseFile(policyFile);
-        plazas = incidencia.getRowDimension();
+        incidencia = Tools.parseFile(incidenceFile);
+        marcadoActual = Tools.parseFile(markingFile); //cargo el marcado inicial
+        inhibicion = Tools.parseFile(inhibitionFile);
         transiciones = incidencia.getColumnDimension();
-        this.alfa = parseFile(alfa).getRowVector(0);
-        this.beta = parseFile(beta).getRowVector(0);
+        this.alfa = Tools.parseFile(alfa).getRowVector(0);
+        this.beta = Tools.parseFile(beta).getRowVector(0);
         Log.log.log(Level.INFO,"INICIO\t\t Marcado: "+getMarcadoActual().toString().substring(20)+"\t"+ currentThread().getName());
         System.out.println(this.alfa.toString());
         timeStamp = Collections.synchronizedList(new ArrayList<>());
-    }
-
-    /*
-    Esta función abre el archivo que se le pasa por parámetro y retorna una RealMatrix con los datos. Descarta
-    la primer fila y la primer columna que son los índices de plazas y transiciones.
-     */
-
-    private RealMatrix parseFile(String fileName) {
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
-            String line = br.readLine();
-            String[] items = line.split(",");
-            items = Arrays.copyOfRange(items, 1, items.length); //Discarding first empty object
-            int columnas = items.length;
-            ArrayList<double[]> linelist = new ArrayList<>();
-            while ((line = br.readLine()) != null) {
-                items = line.split(",");
-                items = Arrays.copyOfRange(items, 1, items.length); //Discarding first column
-                linelist.add(Arrays.stream(items).mapToDouble(Double::parseDouble).toArray());
-            }
-            RealMatrix m = MatrixUtils.createRealMatrix(linelist.toArray(new double[linelist.size()][columnas]));
-            br.close();
-            return m;
-        } catch (FileNotFoundException e) {
-            System.out.println("Error: Archivo " + fileName + " no encontrado.");
-            System.exit(-1);
-        } catch (IOException e) {
-            System.out.println("Error: Error de entrada/salida");
-            System.exit(-1);
-        }
-        return null;
     }
 
     /*
@@ -90,17 +45,16 @@ public class RdP {
 
     public boolean disparar(int transicion)  {
         try {
-        if ((transicion < 0) || (transicion > transiciones))
-            throw new RuntimeException("Numero de transicion fuera de limites");
-        if (sensibilizadas().getEntry(transicion) != 1)
-            return false;
+            if ((transicion < 0) || (transicion > transiciones))
+                throw new RuntimeException("Numero de transicion fuera de limites");
+            if (sensibilizadas().getEntry(transicion) != 1)
+                return false;
 
-        RealMatrix marcadoNuevo;
-        RealMatrix disparo = getVectorDisparo(transicion);
-        RealMatrix marcado = marcadoActual.transpose();
-        marcadoNuevo = marcado.add(incidencia.multiply(disparo));
-        marcadoActual = marcadoNuevo.transpose();
-
+            RealMatrix marcadoNuevo;
+            RealMatrix disparo = getVectorDisparo(transicion);
+            RealMatrix marcado = marcadoActual.transpose();
+            marcadoNuevo = marcado.add(incidencia.multiply(disparo));
+            marcadoActual = marcadoNuevo.transpose();
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
@@ -151,23 +105,7 @@ public class RdP {
      * el indice de la transicion a disparar.
      */
 
-    public int politica(RealVector vector) {
-
-        RealMatrix politica = this.politica;
-        RealVector t1 = politica.operate(vector);
-        RealVector t2 = new ArrayRealVector(t1.getDimension());
-        for (int i = 0; i < t1.getDimension(); i++) {
-            if (t1.getEntry(i) > 0) {
-                t2.setEntry(i, 1);
-                break;
-            }
-        }
-        RealVector td = politica.transpose().operate(t2);
-        return td.getMaxIndex();
-
-    }
-
-    public boolean tieneTiempo(int transicion) {
+    private boolean tieneTiempo(int transicion) {
 
         if(alfa.getEntry(transicion)!= 0 ||beta.getEntry(transicion) != 0)
             return true;
@@ -175,19 +113,10 @@ public class RdP {
             return false;
     }
 
-    /*Aca viene el robo a mano armada*/
-
-    public int cumpleVentanaDeTiempo(int transicion, double tiempo) {
-
-
-        //long alfa = (long)timeDeLasTransiciones.getValor(0, transicion);
+    private int cumpleVentanaDeTiempo(int transicion, double tiempo) {
         double alfa = this.alfa.getEntry(transicion);
-
-       // long beta = (long)timeDeLasTransiciones.getValor(1, transicion);
         double beta = this.beta.getEntry(transicion);
-       // long tiempoSensibilizada = tiempo-timeStamp[transicion];
         double tiempoSensibilizada = tiempo - timeStamp.get(transicion);
-
         if(beta ==0 ) {
             if(alfa > tiempoSensibilizada)
                 return 0;
@@ -202,36 +131,23 @@ public class RdP {
             else
                 return -1; //Indica que la transicion excedio el tiempo de la ventana
         }
-
     }
-    public double dormir(int transicion, double tiempo) {
 
-        //long alfa = (long)timeDeLasTransiciones.getValor(0, transicion);
-
+    private double dormir(int transicion, double tiempo) {
         double alfa = this.alfa.getEntry(transicion);
-
-        //return(alfa - (tiempo-timeStamp[transicion]));
         return (alfa-(tiempo-timeStamp.get(transicion)));
     }
 
     public double getVentanaDeTiempo(int transicion) {
-
         double tiempo = System.currentTimeMillis();
-
-
         if(!this.tieneTiempo(transicion))
             return 0;
-
         else if(this.cumpleVentanaDeTiempo(transicion, tiempo) == 1)
             return 0;
         else if(this.cumpleVentanaDeTiempo(transicion, tiempo) == 0)
             return dormir(transicion,tiempo);
-
-
         return -1; //La transicion excedio el tiempo de la ventana
     }
-
-
 
     public int getTransiciones() {
         return transiciones;
