@@ -2,8 +2,11 @@ package monitor;
 
 import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.RealVector;
+import static java.util.concurrent.locks.LockSupport.*;
 
 import java.util.concurrent.Semaphore;
+
+
 
 public class Colas {
 
@@ -23,6 +26,12 @@ public Colas(int tamano) {
 			arregloSemaphores[i].release();
 			return true;
 		}
+		if (Thread.currentThread().getState() == Thread.State.WAITING) {
+			unpark(Thread.currentThread());
+			throw new InterruptedException("AAAAAAAAAAAAAAAAA");
+		}
+
+
 		return false;
 	}
 

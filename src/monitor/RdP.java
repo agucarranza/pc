@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 
 import static java.lang.Thread.*;
@@ -18,15 +20,21 @@ public class RdP {
 
     private int plazas;
     private int transiciones;
+    private long ventana;
     private RealMatrix incidencia;
     private RealMatrix marcadoActual;
     private RealMatrix inhibicion;
     private RealMatrix politica;
+    private RealVector alfa;
+    private RealVector beta;
+    private List<Double> timeStamp;
 
     public RdP(String incidenceFile,
                String markingFile,
                String inhibitionFile,
-               String policyFile) {
+               String policyFile,
+               String alfa,
+               String beta) {
 
         incidencia = parseFile(incidenceFile);
         marcadoActual = parseFile(markingFile); //cargo el marcado inicial
@@ -34,7 +42,11 @@ public class RdP {
         politica = parseFile(policyFile);
         plazas = incidencia.getRowDimension();
         transiciones = incidencia.getColumnDimension();
+        this.alfa = parseFile(alfa).getRowVector(0);
+        this.beta = parseFile(beta).getRowVector(0);
         Log.log.log(Level.INFO,"INICIO\t\t Marcado: "+getMarcadoActual().toString().substring(20)+"\t"+ currentThread().getName());
+        System.out.println(this.alfa.toString());
+        timeStamp = Collections.synchronizedList(new ArrayList<>());
     }
 
     /*
@@ -76,7 +88,7 @@ public class RdP {
     ninguna transición para disparar en sensibilizadas.
      */
 
-    public boolean disparar(int transicion) throws RuntimeException {
+    public boolean disparar(int transicion)  {
         try {
         if ((transicion < 0) || (transicion > transiciones))
             throw new RuntimeException("Numero de transicion fuera de limites");
@@ -89,8 +101,7 @@ public class RdP {
         marcadoNuevo = marcado.add(incidencia.multiply(disparo));
         marcadoActual = marcadoNuevo.transpose();
 
-        Thread.sleep(10);
-        } catch (InterruptedException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
         return true;
@@ -155,7 +166,73 @@ public class RdP {
         return td.getMaxIndex();
 
     }
-    
+
+    public boolean tieneTiempo(int transicion) {
+
+        if(alfa.getEntry(transicion)!= 0 ||beta.getEntry(transicion) != 0)
+            return true;
+        else
+            return false;
+    }
+
+    /*Aca viene el robo a mano armada*/
+
+    public int cumpleVentanaDeTiempo(int transicion, double tiempo) {
+
+
+        //long alfa = (long)timeDeLasTransiciones.getValor(0, transicion);
+        double alfa = this.alfa.getEntry(transicion);
+
+       // long beta = (long)timeDeLasTransiciones.getValor(1, transicion);
+        double beta = this.beta.getEntry(transicion);
+       // long tiempoSensibilizada = tiempo-timeStamp[transicion];
+        double tiempoSensibilizada = tiempo - timeStamp.get(transicion);
+
+        if(beta ==0 ) {
+            if(alfa > tiempoSensibilizada)
+                return 0;
+            else
+                return 1;
+        }
+        else {
+            if(alfa > tiempoSensibilizada)
+                return 0;
+            else if(alfa <= tiempoSensibilizada && beta >tiempoSensibilizada  )
+                return 1;
+            else
+                return -1; //Indica que la transicion excedio el tiempo de la ventana
+        }
+
+    }
+    public double dormir(int transicion, double tiempo) {
+
+        //long alfa = (long)timeDeLasTransiciones.getValor(0, transicion);
+
+        double alfa = this.alfa.getEntry(transicion);
+
+        //return(alfa - (tiempo-timeStamp[transicion]));
+        return (alfa-(tiempo-timeStamp.get(transicion)));
+    }
+
+    public double getVentanaDeTiempo(int transicion) {
+
+        double tiempo = System.currentTimeMillis();
+
+
+        if(!this.tieneTiempo(transicion))
+            return 0;
+
+        else if(this.cumpleVentanaDeTiempo(transicion, tiempo) == 1)
+            return 0;
+        else if(this.cumpleVentanaDeTiempo(transicion, tiempo) == 0)
+            return dormir(transicion,tiempo);
+
+
+        return -1; //La transicion excedio el tiempo de la ventana
+    }
+
+
+
     public int getTransiciones() {
         return transiciones;
     }

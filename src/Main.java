@@ -3,16 +3,20 @@ import monitor.RdP;
 import monitor.Tarea;
 import log.Log;
 
+import static java.util.concurrent.locks.LockSupport.unpark;
+
 public class Main {
 
 
 
     public static void main(String[] args) throws InterruptedException {
 
-        RdP red = new RdP ("./petri-nets/incidencia.csv",
-                           "./petri-nets/marcado.csv",
-                "./petri-nets/inhibicion.csv",
-                "./petri-nets/politicas.csv");
+        RdP red = new RdP ( "./petri-nets/incidencia.csv",
+                            "./petri-nets/marcado.csv",
+                            "./petri-nets/inhibicion.csv",
+                            "./petri-nets/politicas.csv",
+                            "./petri-nets/alfa.csv",
+                            "./petri-nets/beta.csv");
        new Log();
 
         GestorDeMonitor monitor = new GestorDeMonitor(red);
@@ -32,12 +36,11 @@ public class Main {
         hilo2.start();
         hilo3.start();
 
-        Thread.sleep(5000);
-        hilo0.interrupt();
-        hilo1.interrupt();
-        hilo2.interrupt();
-        hilo3.interrupt();
-        System.exit(0);
-
+        while (true) {
+                unpark(hilo0);
+                unpark(hilo1);
+                unpark(hilo2);
+                unpark(hilo3);
+        }
     }
 }
