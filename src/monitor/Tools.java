@@ -10,14 +10,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Tools {
+class Tools {
 
     /*
     Esta función abre el archivo que se le pasa por parámetro y retorna una RealMatrix con los datos. Descarta
     la primer fila y la primer columna que son los índices de plazas y transiciones.
      */
 
-    public static RealMatrix parseFile(String fileName) {
+    static RealMatrix parseFile(String fileName) {
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
