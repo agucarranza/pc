@@ -17,7 +17,7 @@ public Colas(int tamano) {
 		}
 	}
 
-	public boolean desencolar(int i) throws InterruptedException {
+	boolean desencolar(int i) throws InterruptedException {
 
 		if (arregloSemaphores[i] != null) {
 			arregloSemaphores[i].release();

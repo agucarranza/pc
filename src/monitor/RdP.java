@@ -11,17 +11,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 
-import static java.lang.Thread.currentThread;
+import static java.lang.Thread.*;
 
 
 public class RdP {
 
-    private int plazas;
     private int transiciones;
     private RealMatrix incidencia;
     private RealMatrix marcadoActual;
-    private RealMatrix inhibicion;
     private RealMatrix politica;
+    private PInvariant[] invariantes;
 
     public RdP(String incidenceFile,
                String markingFile,
@@ -30,9 +29,7 @@ public class RdP {
 
         incidencia = parseFile(incidenceFile);
         marcadoActual = parseFile(markingFile); //cargo el marcado inicial
-        inhibicion = parseFile(inhibitionFile);
         politica = parseFile(policyFile);
-        plazas = incidencia.getRowDimension();
         transiciones = incidencia.getColumnDimension();
         Log.log.log(Level.INFO,"INICIO\t\t Marcado: "+getMarcadoActual().toString().substring(20)+"\t"+ currentThread().getName());
     }
@@ -77,9 +74,23 @@ public class RdP {
      */
 
     public boolean disparar(int transicion) throws RuntimeException {
-        //try {
+      
+        	
+        if (transicion == 0) {
+        	System.out.println("holi, quise disparar la del cartel.");
+        	if (sensibilizadas().getEntry(transicion) == 1) {
+        		return false;
+        	}
+        	System.out.println("ta lleno! el cartel deberia prenderse che.");
+        	System.exit(0); 
+        	return true;
+        }
+        	
+        	else {
+            	  
         if ((transicion < 0) || (transicion > transiciones))
             throw new RuntimeException("Numero de transicion fuera de limites");
+        
         if (sensibilizadas().getEntry(transicion) != 1)
             return false;
 
@@ -88,6 +99,8 @@ public class RdP {
         RealMatrix marcado = marcadoActual.transpose();
         marcadoNuevo = marcado.add(incidencia.multiply(disparo));
         marcadoActual = marcadoNuevo.transpose();
+
+        	}
         return true;
     }
 
@@ -158,4 +171,23 @@ public class RdP {
     public RealMatrix getMarcadoActual() {
         return marcadoActual;
     }
+    
+    public void setPInvariants(PInvariant[] inv){
+        this.invariantes = inv;
+    }
+    
+    public boolean checkPInvariant(){
+    //	System.out.println("entra assert");
+        for(PInvariant inv: this.invariantes){
+            int[] plist = inv.getPlaza();
+            int valor = inv.getValor();
+            RealVector vaux = new ArrayRealVector(this.incidencia.getRowDimension());
+            Arrays.stream(plist).forEach(i -> vaux.setEntry(i, 1.));
+            if(valor != (int) vaux.dotProduct(this.marcadoActual.getRowVector(0)))return false;
+        }
+      //  System.out.println("sale assert");
+        return true;
+      
+    }
+  
 }
