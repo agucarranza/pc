@@ -1,14 +1,18 @@
 package monitor;
 
 import log.Log;
-import org.apache.commons.math3.linear.*;
+import org.apache.commons.math3.linear.Array2DRowRealMatrix;
+import org.apache.commons.math3.linear.ArrayRealVector;
+import org.apache.commons.math3.linear.RealMatrix;
+import org.apache.commons.math3.linear.RealVector;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 
 import static java.lang.System.currentTimeMillis;
-import static java.lang.Thread.*;
+import static java.lang.Thread.currentThread;
 
 public class RdP {
 
@@ -52,12 +56,17 @@ public class RdP {
                 throw new RuntimeException("Numero de transicion fuera de limites");
             if (sensibilizadas().getEntry(transicion) != 1)
                 return false;
-
+            ventana = this.getVentanaDeTiempo(transicion);
+            chequearPrioridad();
+            if (ventana != 0)
+                return false;
             RealMatrix marcadoNuevo;
             RealMatrix disparo = getVectorDisparo(transicion);
             RealMatrix marcado = marcadoActual.transpose();
             marcadoNuevo = marcado.add(incidencia.multiply(disparo));
             marcadoActual = marcadoNuevo.transpose();
+            timeStamp.set(transicion, 0.0);
+            calculoTimeStamp();
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
@@ -176,10 +185,17 @@ public class RdP {
 
     public void calculoTimeStamp() {
         for (int i = 0 ; i<timeStamp.size(); i++) {
-            if (sensibilizadas().getEntry(i)==1)
+            if (sensibilizadas().getEntry(i) == 1 && timeStamp.get(i) == 0)
                 timeStamp.set(i, (double) System.currentTimeMillis());
             else
                 timeStamp.set(i,0.0);
+        }
+    }
+
+    private void chequearPrioridad() {
+        if (Thread.currentThread().getPriority() == Thread.MAX_PRIORITY) {
+            ventana = 0;
+            Thread.currentThread().setPriority(Thread.NORM_PRIORITY);
         }
     }
 
@@ -189,6 +205,10 @@ public class RdP {
 
     RealMatrix getMarcadoActual() {
         return marcadoActual;
+    }
+
+    double getVentana() {
+        return ventana;
     }
 
 }

@@ -3,6 +3,7 @@ package monitor;
 import log.Log;
 import org.apache.commons.math3.linear.RealVector;
 import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 
@@ -32,8 +33,14 @@ public class GestorDeMonitor {
         mutex.acquire();
         while (!red.disparar(t)) {
             mutex.release();
-            colas.encolar(t);
-            mutex.acquire();
+            if (!(red.getVentana() > 0 && red.sensibilizadas().getEntry(t) == 1))
+                colas.encolar(t);
+            else {
+                Thread.sleep((long) red.getVentana());
+                Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+                mutex.acquire();
+            }
+
         }
         RealVector v_sensibilizadas = red.sensibilizadas();
         RealVector v_colas = colas.quienesEstan();
