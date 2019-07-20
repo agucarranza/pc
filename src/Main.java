@@ -1,22 +1,21 @@
+import log.Log;
 import monitor.GestorDeMonitor;
 import monitor.RdP;
 import monitor.Tarea;
-import log.Log;
 
 import static java.util.concurrent.locks.LockSupport.unpark;
 
 public class Main {
 
 
-
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         RdP red = new RdP ( "./petri-nets/incidencia.csv",
-                            "./petri-nets/marcado.csv",
-                            "./petri-nets/inhibicion.csv",
-                            "./petri-nets/alfa.csv",
-                            "./petri-nets/beta.csv");
-       new Log();
+                "./petri-nets/marcado.csv",
+                // "./petri-nets/inhibicion.csv",
+                "./petri-nets/alfa.csv",
+                "./petri-nets/beta.csv");
+        new Log();
 
         GestorDeMonitor monitor = new GestorDeMonitor(red);
         Tarea tarea0 = new Tarea(monitor,0);
@@ -36,10 +35,10 @@ public class Main {
         hilo3.start();
 
         while (true) {
-                unpark(hilo0);
-                unpark(hilo1);
-                unpark(hilo2);
-                unpark(hilo3);
+            unpark(hilo0);
+            unpark(hilo1);
+            unpark(hilo2);
+            unpark(hilo3);
         }
     }
 }

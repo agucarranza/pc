@@ -20,20 +20,20 @@ public class RdP {
     private double ventana;
     private RealMatrix incidencia;
     private RealMatrix marcadoActual;
-    private RealMatrix inhibicion;
+    //private RealMatrix inhibicion;
     private RealVector alfa;
     private RealVector beta;
     private List<Double> timeStamp;
 
     public RdP(String incidenceFile,
                String markingFile,
-               String inhibitionFile,
+               //  String inhibitionFile,
                String alfa,
                String beta) {
 
         incidencia = Tools.parseFile(incidenceFile);
         marcadoActual = Tools.parseFile(markingFile); //cargo el marcado inicial
-        inhibicion = Tools.parseFile(inhibitionFile);
+        //inhibicion = Tools.parseFile(inhibitionFile);
         transiciones = incidencia.getColumnDimension();
         this.alfa = Tools.parseFile(alfa).getRowVector(0);
         this.beta = Tools.parseFile(beta).getRowVector(0);
@@ -126,7 +126,7 @@ public class RdP {
      * @return Devuelve 0 si la transición no tiene tiempo
      */
 
-    public double getVentanaDeTiempo(int transicion) {
+    private double getVentanaDeTiempo(int transicion) {
         double tiempo = currentTimeMillis();
         if(!this.tieneTiempo(transicion))
             return 0;
@@ -170,7 +170,7 @@ public class RdP {
      *
      * @param transicion Es la transición
      * @param tiempo Tiempo es el valor que le pasa getVentanaDeTiempo, que es el tiempo actual.
-     * @return
+     * @return TERMINAR DE ENTENDER.
      */
     private double dormir(int transicion, double tiempo) {
         double alfa = this.alfa.getEntry(transicion);
@@ -183,7 +183,7 @@ public class RdP {
      * (Ver si hay que preguntar si el valor del array es cero en el if).
      */
 
-    public void calculoTimeStamp() {
+    private void calculoTimeStamp() {
         for (int i = 0 ; i<timeStamp.size(); i++) {
             if (sensibilizadas().getEntry(i) == 1 && timeStamp.get(i) == 0)
                 timeStamp.set(i, (double) System.currentTimeMillis());
