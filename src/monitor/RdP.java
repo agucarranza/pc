@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 
-import static java.lang.Thread.*;
+import static java.lang.Thread.currentThread;
 
 
 public class RdP {
@@ -73,7 +73,7 @@ public class RdP {
     ninguna transición para disparar en sensibilizadas.
      */
 
-    public boolean disparar(int transicion) throws RuntimeException {
+    boolean disparar(int transicion) throws RuntimeException {
       
         	
         if (transicion == 0) {
@@ -112,7 +112,7 @@ public class RdP {
     que luego el bucle lo agregue en la transicion siguiente.
      */
 
-    public RealVector sensibilizadas() {
+    RealVector sensibilizadas() {
 
         RealVector vector;
         RealVector vector_sensibilizadas = new ArrayRealVector(transiciones);
@@ -163,20 +163,20 @@ public class RdP {
         return td.getMaxIndex();
 
     }
-    
-    public int getTransiciones() {
+
+    int getTransiciones() {
         return transiciones;
     }
 
-    public RealMatrix getMarcadoActual() {
+    RealMatrix getMarcadoActual() {
         return marcadoActual;
     }
     
     public void setPInvariants(PInvariant[] inv){
         this.invariantes = inv;
     }
-    
-    public boolean checkPInvariant(){
+
+    boolean checkPInvariant() {
     //	System.out.println("entra assert");
         for(PInvariant inv: this.invariantes){
             int[] plist = inv.getPlaza();

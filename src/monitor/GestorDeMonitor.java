@@ -3,14 +3,15 @@ package monitor;
 import log.Log;
 import org.apache.commons.math3.linear.RealVector;
 
-
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class GestorDeMonitor {
 
-    public Semaphore mutex;
+    private Semaphore mutex;
     private RdP red;
     private Colas colas;
     private int in =0;
