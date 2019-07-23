@@ -6,9 +6,7 @@ import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.RealVector;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 import java.util.logging.Level;
 
 import static java.lang.System.currentTimeMillis;
@@ -23,7 +21,7 @@ public class RdP {
     //private RealMatrix inhibicion;
     private RealVector alfa;
     private RealVector beta;
-    private List<Double> timeStamp;
+    private double[] timeStamp;
 
     public RdP(String incidenceFile,
                String markingFile,
@@ -39,8 +37,12 @@ public class RdP {
         this.beta = Tools.parseFile(beta).getRowVector(0);
         Log.log.log(Level.INFO,"INICIO\t\t Marcado: "+getMarcadoActual().toString().substring(20)+"\t"+ currentThread().getName());
         System.out.println(this.alfa.toString());
-        timeStamp = Collections.synchronizedList(new ArrayList<>());
-        timeStamp.clear();
+        //timeStamp = Collections.synchronizedList(new ArrayList<>(transiciones));
+        timeStamp = new double[transiciones];
+        Arrays.fill(timeStamp, 0);
+
+
+
     }
 
     /**
@@ -65,7 +67,8 @@ public class RdP {
             RealMatrix marcado = marcadoActual.transpose();
             marcadoNuevo = marcado.add(incidencia.multiply(disparo));
             marcadoActual = marcadoNuevo.transpose();
-            timeStamp.set(transicion, 0.0);
+            // timeStamp.set(transicion, 0.0);
+            timeStamp[transicion] = 0.0;
             calculoTimeStamp();
         } catch (RuntimeException e) {
             e.printStackTrace();
@@ -149,7 +152,7 @@ public class RdP {
     private int cumpleVentanaDeTiempo(int transicion, double tiempo) {
         double alfa = this.alfa.getEntry(transicion);
         double beta = this.beta.getEntry(transicion);
-        double tiempoSensibilizada = tiempo - timeStamp.get(transicion);
+        double tiempoSensibilizada = tiempo - timeStamp[transicion]; //timeStamp.get(transicion);
         if(beta ==0 ) {
             if(alfa > tiempoSensibilizada)
                 return 0;
@@ -174,7 +177,8 @@ public class RdP {
      */
     private double dormir(int transicion, double tiempo) {
         double alfa = this.alfa.getEntry(transicion);
-        return (alfa-(tiempo-timeStamp.get(transicion)));
+        // return (alfa-(tiempo-timeStamp.get(transicion)));
+        return (alfa - (tiempo - timeStamp[transicion]));
     }
 
     /**
@@ -183,12 +187,20 @@ public class RdP {
      * (Ver si hay que preguntar si el valor del array es cero en el if).
      */
 
-    private void calculoTimeStamp() {
+    /*private void calculoTimeStamp() {
         for (int i = 0 ; i<timeStamp.size(); i++) {
             if (sensibilizadas().getEntry(i) == 1 && timeStamp.get(i) == 0)
                 timeStamp.set(i, (double) System.currentTimeMillis());
             else
                 timeStamp.set(i,0.0);
+        }
+    }*/
+    private void calculoTimeStamp() {
+        for (int i = 0; i < timeStamp.length; i++) {
+            if (sensibilizadas().getEntry(i) == 1 && timeStamp[i] == 0)
+                timeStamp[i] = (double) System.currentTimeMillis();
+            else
+                timeStamp[i] = 0.0;
         }
     }
 

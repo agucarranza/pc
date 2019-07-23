@@ -19,7 +19,7 @@ public class Tarea implements Runnable {
             }
         }
         catch (InterruptedException e) {
-            System.out.println(e);
+            e.printStackTrace();
             System.out.println(Thread.currentThread().getName());
         }
     }
