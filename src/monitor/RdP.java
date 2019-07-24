@@ -11,23 +11,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 
-import static java.lang.Thread.currentThread;
+import static java.lang.Thread.*;
 
 
 public class RdP {
 
     private int transiciones;
     private RealMatrix incidencia;
+    private RealMatrix incidencianeg;
     private RealMatrix marcadoActual;
     private RealMatrix politica;
     private PInvariant[] invariantes;
 
     public RdP(String incidenceFile,
                String markingFile,
-               String inhibitionFile,
+               String incidencianegFile,
                String policyFile) {
 
         incidencia = parseFile(incidenceFile);
+        incidencianeg = parseFile(incidencianegFile);
         marcadoActual = parseFile(markingFile); //cargo el marcado inicial
         politica = parseFile(policyFile);
         transiciones = incidencia.getColumnDimension();
@@ -73,21 +75,26 @@ public class RdP {
     ninguna transición para disparar en sensibilizadas.
      */
 
-    boolean disparar(int transicion) throws RuntimeException {
+    public boolean disparar(int transicion) throws RuntimeException {
       
         	
-        if (transicion == 0) {
-        	System.out.println("holi, quise disparar la del cartel.");
-        	if (sensibilizadas().getEntry(transicion) == 1) {
+        if (transicion == 0) {   //Inhibidor
+        	RealVector v1 =this.marcadoActual.getRowVector(0);
+        	if (v1.getEntry(21) > 0 || v1.getEntry(22)==0) {  //si hay lugares de estacionamiento, o si el cartel ya esta prendido
         		return false;
         	}
-        	System.out.println("ta lleno! el cartel deberia prenderse che.");
-        	System.exit(0); 
-        	return true;
+        	RealMatrix marcadoNuevo;
+            RealMatrix disparo = getVectorDisparo(transicion);
+            RealMatrix marcado = marcadoActual.transpose();
+            marcadoNuevo = marcado.add(incidencia.multiply(disparo));
+            marcadoActual = marcadoNuevo.transpose();
+
+            	
+            return true;
+        	        	
         }
-        	
-        	else {
-            	  
+        	  
+        else {
         if ((transicion < 0) || (transicion > transiciones))
             throw new RuntimeException("Numero de transicion fuera de limites");
         
@@ -100,8 +107,9 @@ public class RdP {
         marcadoNuevo = marcado.add(incidencia.multiply(disparo));
         marcadoActual = marcadoNuevo.transpose();
 
-        	}
+        	
         return true;
+        }
     }
 
     /*
@@ -112,7 +120,7 @@ public class RdP {
     que luego el bucle lo agregue en la transicion siguiente.
      */
 
-    RealVector sensibilizadas() {
+    public RealVector sensibilizadas() {
 
         RealVector vector;
         RealVector vector_sensibilizadas = new ArrayRealVector(transiciones);
@@ -121,7 +129,7 @@ public class RdP {
 
         for (int k = 0; k < transiciones; k++) { //Dispara todas las transiciones
             disparo.setEntry(k, 0, 1);
-            vector = marcado.add(incidencia.multiply(disparo)).getColumnVector(0);
+            vector = marcado.add(incidencianeg.multiply(disparo)).getColumnVector(0);
             if (vector.getMinValue() >= 0)
                 vector_sensibilizadas.setEntry(k, 1);
             disparo.setEntry(k, 0, 0);
@@ -163,20 +171,20 @@ public class RdP {
         return td.getMaxIndex();
 
     }
-
-    int getTransiciones() {
+    
+    public int getTransiciones() {
         return transiciones;
     }
 
-    RealMatrix getMarcadoActual() {
+    public RealMatrix getMarcadoActual() {
         return marcadoActual;
     }
     
     public void setPInvariants(PInvariant[] inv){
         this.invariantes = inv;
     }
-
-    boolean checkPInvariant() {
+    
+    public boolean checkPInvariant(){
     //	System.out.println("entra assert");
         for(PInvariant inv: this.invariantes){
             int[] plist = inv.getPlaza();

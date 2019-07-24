@@ -1,17 +1,17 @@
 package monitor;
 
+
 import log.Log;
 import org.apache.commons.math3.linear.RealVector;
 
+
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static org.junit.Assert.assertTrue;
 
 public class GestorDeMonitor {
 
-    private Semaphore mutex;
+    public Semaphore mutex;
     private RdP red;
     private Colas colas;
     private int in =0;
@@ -36,14 +36,14 @@ public class GestorDeMonitor {
             colas.encolar(t);
             mutex.acquire();
         }
-    	if (t!=0){
+    
     		 try{
     	  RealVector v_sensibilizadas = red.sensibilizadas();
           RealVector v_colas = colas.quienesEstan();
           RealVector m = v_sensibilizadas.ebeMultiply(v_colas);
           Log.log.log(Level.INFO, (in++)+"\tDISPARE!\t Marcado: " + red.getMarcadoActual().toString().substring(20) + "\t" + Thread.currentThread().getName() +"\tSensi:"+v_sensibilizadas.toString()+ "\tT:" + t+"\tColas: "+v_colas.toString()+"\tm: "+ m.toString()+"\tPolitica: "+red.politica(m));
          // System.out.println(t);
-          assertTrue(this.red.checkPInvariant());
+        //  assertTrue(this.red.checkPInvariant());  descomentar cuando esten cargadas las p invariantes en el main
           if (!isCero(m)) {
               colas.desencolar(red.politica(m));
           }
@@ -54,12 +54,9 @@ public class GestorDeMonitor {
               "\n[!] ERROR: Algun invariante no se cumple, terminando");
          System.exit(-1);
     	 }
-    	}
     	
-    	else {
-            Log.log.log(Level.INFO, (in++)+"\tDISPARE!\t : " + "\t" + Thread.currentThread().getName()  + t);
-        }
-          mutex.release();
+    		 
+    	mutex.release();
         
       }
 
