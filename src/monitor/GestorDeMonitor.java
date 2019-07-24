@@ -4,10 +4,8 @@ package monitor;
 import log.Log;
 import org.apache.commons.math3.linear.RealVector;
 
-
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
-import static org.junit.Assert.assertTrue;
 
 public class GestorDeMonitor {
 
