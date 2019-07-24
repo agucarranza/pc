@@ -22,6 +22,8 @@ public class RdP {
     private RealVector beta;
     private long[] timeStamp;
     private RealVector vSensib;
+    private RealMatrix politica;
+    private PInvariant[] invariantes;
 
     public RdP(String incidenceFile,
                String markingFile,
@@ -32,6 +34,9 @@ public class RdP {
         incidencia = Tools.parseFile(incidenceFile);
         marcadoActual = Tools.parseFile(markingFile); //cargo el marcado inicial
         //inhibicion = Tools.parseFile(inhibitionFile);
+        incidencia = parseFile(incidenceFile);
+        marcadoActual = parseFile(markingFile); //cargo el marcado inicial
+        politica = parseFile(policyFile);
         transiciones = incidencia.getColumnDimension();
         this.alfa = Tools.parseFile(alfa).getRowVector(0);
         this.beta = Tools.parseFile(beta).getRowVector(0);
@@ -54,6 +59,34 @@ public class RdP {
      CUANDO LA VENTANA TIENE VALOR SALE DE LA FUNCIÓN
      */
 
+    boolean disparar(int transicion) throws RuntimeException {
+
+
+        if (transicion == 0) {
+        	System.out.println("holi, quise disparar la del cartel.");
+        	if (sensibilizadas().getEntry(transicion) == 1) {
+        		return false;
+        	}
+        	System.out.println("ta lleno! el cartel deberia prenderse che.");
+        	System.exit(0);
+        	return true;
+        }
+
+        	else {
+
+        if ((transicion < 0) || (transicion > transiciones))
+            throw new RuntimeException("Numero de transicion fuera de limites");
+
+        if (sensibilizadas().getEntry(transicion) != 1)
+            return false;
+
+        RealMatrix marcadoNuevo;
+        RealMatrix disparo = getVectorDisparo(transicion);
+        RealMatrix marcado = marcadoActual.transpose();
+        marcadoNuevo = marcado.add(incidencia.multiply(disparo));
+        marcadoActual = marcadoNuevo.transpose();
+
+        	}
     boolean disparar(int transicion)  {
         try {
             if ((transicion < 0) || (transicion > transiciones))
@@ -191,6 +224,8 @@ public class RdP {
         return (alfa - (tiempo - timeStamp[transicion]));
     }
 
+    int getTransiciones() {
+
     /**
      * CalculoTimeStamp recorre el array completo. Para cada transición que está sensibilizada
      * guarda el tiempo actual. Si no está sensibilizada, pone en cero el timestamp.
@@ -220,6 +255,26 @@ public class RdP {
     RealMatrix getMarcadoActual() {
         return marcadoActual;
     }
+
+    public void setPInvariants(PInvariant[] inv){
+        this.invariantes = inv;
+    }
+
+    boolean checkPInvariant() {
+    //	System.out.println("entra assert");
+        for(PInvariant inv: this.invariantes){
+            int[] plist = inv.getPlaza();
+            int valor = inv.getValor();
+            RealVector vaux = new ArrayRealVector(this.incidencia.getRowDimension());
+            Arrays.stream(plist).forEach(i -> vaux.setEntry(i, 1.));
+            if(valor != (int) vaux.dotProduct(this.marcadoActual.getRowVector(0)))return false;
+        }
+      //  System.out.println("sale assert");
+        return true;
+
+    }
+
+}
 
     long getVentana() {
         return ventana;

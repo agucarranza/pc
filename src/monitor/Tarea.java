@@ -1,11 +1,10 @@
 package monitor;
-
 public class Tarea implements Runnable {
 
     private GestorDeMonitor monitor;
-    private int transicion;
+    private int[] transicion;
 
-    public Tarea(GestorDeMonitor monitor, int transicion) {
+    public Tarea(GestorDeMonitor monitor, int [] transicion) {
         this.monitor = monitor;
         this.transicion = transicion;
     }
@@ -13,14 +12,17 @@ public class Tarea implements Runnable {
     @Override
     public void run() {
         try {
-            //for (int i=0;i<1;i++) {
-            while(true) {
-                monitor.dispararTransicion(transicion);
-            }
+        	while (true) {
+
+            for (int i =0;i<transicion.length;i++) {
+                monitor.dispararTransicion(transicion[i]);
+                }
+          //  System.out.println(Thread.currentThread().getName()+" se murio");
+
+        	 }
         }
         catch (InterruptedException e) {
-            e.printStackTrace();
-            System.out.println(Thread.currentThread().getName());
+            System.out.println(e);
         }
     }
 }
