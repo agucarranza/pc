@@ -12,6 +12,7 @@ public class GestorDeMonitor {
     public Semaphore mutex;
     private RdP red;
     private Colas colas;
+    private Politicas politica;
     private int in =0;
 
     public GestorDeMonitor(RdP red) {
@@ -19,6 +20,7 @@ public class GestorDeMonitor {
         this.red = red;
         mutex = new Semaphore(1, true);
         colas = new Colas(red.getTransiciones());
+        politica = new Politicas();
     }
 
     /*
@@ -43,7 +45,7 @@ public class GestorDeMonitor {
          // System.out.println(t);
         //  assertTrue(this.red.checkPInvariant());  descomentar cuando esten cargadas las p invariantes en el main
           if (!isCero(m)) {
-              colas.desencolar(red.politica(m));
+              colas.desencolar(politica.cual(m));
           }
          
     	 }catch(AssertionError e){
