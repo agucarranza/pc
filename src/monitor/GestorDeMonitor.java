@@ -9,7 +9,7 @@ import java.util.logging.Level;
 
 public class GestorDeMonitor {
 
-    public Semaphore mutex;
+    private Semaphore mutex;
     private RdP red;
     private Colas colas;
     private Politicas politica;
@@ -28,7 +28,7 @@ public class GestorDeMonitor {
      *
      */
 
-    public void dispararTransicion(int t) throws InterruptedException {
+    void dispararTransicion(int t) throws InterruptedException {
     	
     	mutex.acquire();
     	while (!red.disparar(t)) {
@@ -71,10 +71,6 @@ public class GestorDeMonitor {
             return false;
         }
     return true;
-    }
-
-    public Colas getColas() {
-        return colas;
     }
 
 }

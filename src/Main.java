@@ -13,8 +13,9 @@ public class Main {
 
         RdP red = new RdP ("./petri-nets/incidencia.csv",
                 "./petri-nets/marcado.csv",
-                "./petri-nets/incidengianeg.csv"
-        );
+                "./petri-nets/incidencianeg.csv",
+                "./petri-nets/alfa.csv",
+                "./petri-nets/beta.csv");
         new Log();
 
         GestorDeMonitor monitor = new GestorDeMonitor(red);

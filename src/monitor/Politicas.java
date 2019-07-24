@@ -8,7 +8,7 @@ class Politicas {
     private RealMatrix politica;
 
     Politicas() {
-        politica = Tools.parseFile("./petri-nets/politicas.csv");
+        politica = Tools.parseFile("./petri-nets/identidad.csv");
     }
 
     /**

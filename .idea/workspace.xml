@@ -2,8 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eb768c9-8b36-4676-8073-79e9e278fc18" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/logfile.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/petri-nets/alfa.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/petri-nets/beta.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pc/META-INF/pc.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pc/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pc/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pc/monitor/Colas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pc/monitor/Colas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pc/monitor/GestorDeMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pc/monitor/GestorDeMonitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pc/monitor/Politicas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pc/monitor/Politicas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pc/monitor/RdP.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pc/monitor/RdP.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/pc/monitor/Tarea.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/pc/monitor/Tarea.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/identidad.csv" beforeDir="false" afterPath="$PROJECT_DIR$/petri-nets/identidad.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/identidad3.0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/incidencia.csv" beforeDir="false" afterPath="$PROJECT_DIR$/petri-nets/incidencia.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/incidencia2.0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/incidencia3.0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/incidencianeg.csv" beforeDir="false" afterPath="$PROJECT_DIR$/petri-nets/incidencianeg.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/incidencianeg2.0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/incidencianeg3.0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/marcado.csv" beforeDir="false" afterPath="$PROJECT_DIR$/petri-nets/marcado.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/marcado2.0.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/marcado3.0.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monitor/Colas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/Colas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monitor/Politicas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/Politicas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/monitor/RdP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/RdP.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -166,7 +190,7 @@
       <workItem from="1563833305662" duration="1671000" />
       <workItem from="1563886830436" duration="17519000" />
       <workItem from="1563971871262" duration="6034000" />
-      <workItem from="1563986524070" duration="10790000" />
+      <workItem from="1563986524070" duration="12733000" />
     </task>
     <task id="LOCAL-00001" summary="Creados los hilos, faltan las politicas">
       <created>1561432636889</created>
@@ -322,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564005879359</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="ordenado el codigo . separo la politica">
+      <created>1564006538845</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1564006538845</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -383,7 +414,8 @@
     <MESSAGE value="matrices" />
     <MESSAGE value="matrices3.0" />
     <MESSAGE value="diccionario y separo politicas" />
-    <option name="LAST_COMMIT_MESSAGE" value="diccionario y separo politicas" />
+    <MESSAGE value="ordenado el codigo . separo la politica" />
+    <option name="LAST_COMMIT_MESSAGE" value="ordenado el codigo . separo la politica" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

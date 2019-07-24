@@ -5,11 +5,11 @@ import org.apache.commons.math3.linear.RealVector;
 
 import java.util.concurrent.Semaphore;
 
-public class Colas {
+class Colas {
 
 	private Semaphore[] arregloSemaphores;
 
-public Colas(int tamano) {
+    Colas(int tamano) {
 
 	arregloSemaphores = new Semaphore[tamano];
 		for (int i = 0; i < tamano; i++) {
@@ -17,16 +17,14 @@ public Colas(int tamano) {
 		}
 	}
 
-	boolean desencolar(int i) throws InterruptedException {
+    void desencolar(int i) {
 
 		if (arregloSemaphores[i] != null) {
 			arregloSemaphores[i].release();
-			return true;
 		}
-		return false;
 	}
 
-	public RealVector quienesEstan() {
+    RealVector quienesEstan() {
 
     RealVector Vc = new ArrayRealVector(arregloSemaphores.length);
     Vc.set(0);
