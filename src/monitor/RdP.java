@@ -18,18 +18,15 @@ public class RdP {
     private RealMatrix incidencia;
     private RealMatrix incidencianeg;
     private RealMatrix marcadoActual;
-    private RealMatrix politica;
     private PInvariant[] invariantes;
 
     public RdP(String incidenceFile,
                String markingFile,
-               String incidencianegFile,
-               String policyFile) {
+               String incidencianegFile) {
 
         incidencia = Tools.parseFile(incidenceFile);
         incidencianeg = Tools.parseFile(incidencianegFile);
         marcadoActual = Tools.parseFile(markingFile); //cargo el marcado inicial
-        politica = Tools.parseFile(policyFile);
         transiciones = incidencia.getColumnDimension();
         Log.log.log(Level.INFO,"INICIO\t\t Marcado: "+getMarcadoActual().toString().substring(20)+"\t"+ currentThread().getName());
     }
@@ -41,7 +38,7 @@ public class RdP {
     ninguna transición para disparar en sensibilizadas.
      */
 
-    public boolean disparar(int transicion) throws RuntimeException {
+    boolean disparar(int transicion) throws RuntimeException {
       
         	
         if (transicion == 0) {   //Inhibidor
@@ -86,7 +83,7 @@ public class RdP {
     que luego el bucle lo agregue en la transicion siguiente.
      */
 
-    public RealVector sensibilizadas() {
+    RealVector sensibilizadas() {
 
         RealVector vector;
         RealVector vector_sensibilizadas = new ArrayRealVector(transiciones);
@@ -114,35 +111,11 @@ public class RdP {
         return disparo;
     }
 
-    /*
-     * Este método recibe el vector de sensibilizadas como parámetro.
-     * Se posmultiplica con la matriz de politica previamente cargado.
-     * De ese resultado, elijo la primera transicion que encuentre y borro las otras.
-     * Luego la posmultiplico con la matriz de politica nuevamente y consigo el
-     * el indice de la transicion a disparar.
-     */
-
-    public int politica(RealVector vector) {
-
-        RealMatrix politica = this.politica;
-        RealVector t1 = politica.operate(vector);
-        RealVector t2 = new ArrayRealVector(t1.getDimension());
-        for (int i = 0; i < t1.getDimension(); i++) {
-            if (t1.getEntry(i) > 0) {
-                t2.setEntry(i, 1);
-                break;
-            }
-        }
-        RealVector td = politica.transpose().operate(t2);
-        return td.getMaxIndex();
-
-    }
-    
-    public int getTransiciones() {
+    int getTransiciones() {
         return transiciones;
     }
 
-    public RealMatrix getMarcadoActual() {
+    RealMatrix getMarcadoActual() {
         return marcadoActual;
     }
     

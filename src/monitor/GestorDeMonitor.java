@@ -41,7 +41,7 @@ public class GestorDeMonitor {
     	  RealVector v_sensibilizadas = red.sensibilizadas();
           RealVector v_colas = colas.quienesEstan();
           RealVector m = v_sensibilizadas.ebeMultiply(v_colas);
-          Log.log.log(Level.INFO, (in++)+"\tDISPARE!\t Marcado: " + red.getMarcadoActual().toString().substring(20) + "\t" + Thread.currentThread().getName() +"\tSensi:"+v_sensibilizadas.toString()+ "\tT:" + t+"\tColas: "+v_colas.toString()+"\tm: "+ m.toString()+"\tPolitica: "+red.politica(m));
+                 Log.log.log(Level.INFO, (in++) + "\tDISPARE!\t Marcado: " + red.getMarcadoActual().toString().substring(20) + "\t" + Thread.currentThread().getName() + "\tSensi:" + v_sensibilizadas.toString() + "\tT:" + t + "\tColas: " + v_colas.toString() + "\tm: " + m.toString() + "\tPolitica: " + politica.cual(m));
          // System.out.println(t);
         //  assertTrue(this.red.checkPInvariant());  descomentar cuando esten cargadas las p invariantes en el main
           if (!isCero(m)) {
