@@ -3,8 +3,6 @@ import monitor.GestorDeMonitor;
 import monitor.RdP;
 import monitor.Tarea;
 
-import static java.util.concurrent.locks.LockSupport.unpark;
-
 public class Main {
 
 
@@ -34,11 +32,11 @@ public class Main {
         hilo2.start();
         hilo3.start();
 
-        while (true) {
+       /* while (true) {
             unpark(hilo0);
             unpark(hilo1);
             unpark(hilo2);
             unpark(hilo3);
-        }
+        }*/
     }
 }

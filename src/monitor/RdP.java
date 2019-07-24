@@ -9,19 +9,19 @@ import org.apache.commons.math3.linear.RealVector;
 import java.util.Arrays;
 import java.util.logging.Level;
 
-import static java.lang.System.currentTimeMillis;
 import static java.lang.Thread.currentThread;
 
 public class RdP {
 
     private int transiciones;
-    private double ventana;
+    private long ventana;
     private RealMatrix incidencia;
     private RealMatrix marcadoActual;
     //private RealMatrix inhibicion;
     private RealVector alfa;
     private RealVector beta;
-    private double[] timeStamp;
+    private long[] timeStamp;
+    private RealVector vSensib;
 
     public RdP(String incidenceFile,
                String markingFile,
@@ -38,7 +38,8 @@ public class RdP {
         Log.log.log(Level.INFO,"INICIO\t\t Marcado: "+getMarcadoActual().toString().substring(20)+"\t"+ currentThread().getName());
         System.out.println(this.alfa.toString());
         //timeStamp = Collections.synchronizedList(new ArrayList<>(transiciones));
-        timeStamp = new double[transiciones];
+        vSensib = sensibilizadas();
+        timeStamp = new long[transiciones];
         Arrays.fill(timeStamp, 0);
 
 
@@ -50,14 +51,17 @@ public class RdP {
      actual.
      Devuelve k = true cuando pudo disparar una transicion. False cuando no encontró
      ninguna transición para disparar en sensibilizadas.
+     CUANDO LA VENTANA TIENE VALOR SALE DE LA FUNCIÓN
      */
 
     boolean disparar(int transicion)  {
         try {
             if ((transicion < 0) || (transicion > transiciones))
                 throw new RuntimeException("Numero de transicion fuera de limites");
-            if (sensibilizadas().getEntry(transicion) != 1)
+            if (sensibilizadas().getEntry(transicion) != 1) {
+                ventana = 0;
                 return false;
+            }
             ventana = this.getVentanaDeTiempo(transicion);
             chequearPrioridad();
             if (ventana != 0)
@@ -68,7 +72,7 @@ public class RdP {
             marcadoNuevo = marcado.add(incidencia.multiply(disparo));
             marcadoActual = marcadoNuevo.transpose();
             // timeStamp.set(transicion, 0.0);
-            timeStamp[transicion] = 0.0;
+            timeStamp[transicion] = 0;
             calculoTimeStamp();
         } catch (RuntimeException e) {
             e.printStackTrace();
@@ -124,20 +128,25 @@ public class RdP {
     }
 
     /**
-     * [...]
-     * @param transicion Es el número de transición sobre la cual se aplica el método.
-     * @return Devuelve 0 si la transición no tiene tiempo
+     * Función que retorna el valor
+     * @param   transicion Es el número de transición sobre la cual se controla.
+     * @return Devuelve 0 si es una transición sin tiempo o con tiempo y DENTRO de la ventana
+     *
      */
 
-    private double getVentanaDeTiempo(int transicion) {
-        double tiempo = currentTimeMillis();
+    private long getVentanaDeTiempo(int transicion) {
+        long ahora = System.currentTimeMillis();
+        // Es una transición sin tiempo.
         if(!this.tieneTiempo(transicion))
             return 0;
-        else if(this.cumpleVentanaDeTiempo(transicion, tiempo) == 1)
+            // Es una transición con tiempo y está DENTRO de la ventana.
+        else if (this.cumpleVentanaDeTiempo(transicion, ahora) == 1)
             return 0;
-        else if(this.cumpleVentanaDeTiempo(transicion, tiempo) == 0)
-            return dormir(transicion,tiempo);
-        return -1; //La transicion excedió el tiempo de la ventana
+            // Es una transición con tiempo y está ANTES de la ventana.
+        else if (this.cumpleVentanaDeTiempo(transicion, ahora) == 0)
+            return dormir(transicion, ahora);
+        // Es una transición sin tiempo o con tiempo DESPUÉS de la ventana.
+        return -1;
     }
 
     /**
@@ -146,6 +155,7 @@ public class RdP {
      * @param tiempo Es el instante actual.
      * @return  Si beta no tiene tiempo, controla alfa. tiempoSensibilizada debe ser mayor que alfa.
      *          tiempoSensibilizada tiene que estar entre alfa y beta para que retorne true.
+     * ENTIEMPO de cristian.
      *
      */
 
@@ -170,13 +180,13 @@ public class RdP {
     }
 
     /**
-     *
-     * @param transicion Es la transición
+     * Función que viene de getVentanaDeTiempo porque la transición se quiso disparar antes de alfa.
+     * @param transicion Es la transición en cuestión.
      * @param tiempo Tiempo es el valor que le pasa getVentanaDeTiempo, que es el tiempo actual.
      * @return TERMINAR DE ENTENDER.
      */
-    private double dormir(int transicion, double tiempo) {
-        double alfa = this.alfa.getEntry(transicion);
+    private long dormir(int transicion, long tiempo) {
+        long alfa = (long) this.alfa.getEntry(transicion);
         // return (alfa-(tiempo-timeStamp.get(transicion)));
         return (alfa - (tiempo - timeStamp[transicion]));
     }
@@ -187,20 +197,12 @@ public class RdP {
      * (Ver si hay que preguntar si el valor del array es cero en el if).
      */
 
-    /*private void calculoTimeStamp() {
-        for (int i = 0 ; i<timeStamp.size(); i++) {
-            if (sensibilizadas().getEntry(i) == 1 && timeStamp.get(i) == 0)
-                timeStamp.set(i, (double) System.currentTimeMillis());
-            else
-                timeStamp.set(i,0.0);
-        }
-    }*/
     private void calculoTimeStamp() {
         for (int i = 0; i < timeStamp.length; i++) {
             if (sensibilizadas().getEntry(i) == 1 && timeStamp[i] == 0)
-                timeStamp[i] = (double) System.currentTimeMillis();
+                timeStamp[i] = System.currentTimeMillis();
             else
-                timeStamp[i] = 0.0;
+                timeStamp[i] = 0;
         }
     }
 
@@ -219,7 +221,7 @@ public class RdP {
         return marcadoActual;
     }
 
-    double getVentana() {
+    long getVentana() {
         return ventana;
     }
 

@@ -33,14 +33,16 @@ public class GestorDeMonitor {
         mutex.acquire();
         while (!red.disparar(t)) {
             mutex.release();
-            if (!(red.getVentana() > 0 && red.sensibilizadas().getEntry(t) == 1))
+            if (red.getVentana() > 0 && red.sensibilizadas().getEntry(t) == 1) //revisar!!
+                try {
+                    Thread.sleep(red.getVentana());
+                    mutex.acquire();
+                    Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            else
                 colas.encolar(t);
-            else {
-                Thread.sleep((long) red.getVentana());
-                Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
-                mutex.acquire();
-            }
-
         }
         RealVector v_sensibilizadas = red.sensibilizadas();
         RealVector v_colas = colas.quienesEstan();
