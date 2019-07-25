@@ -53,7 +53,9 @@ public class RdP {
         	
         if (transicion == 0) {   //Inhibidor
         	RealVector v1 =this.marcadoActual.getRowVector(0);
+        	// System.out.println("t de cartel");
         	if (v1.getEntry(21) > 0 || v1.getEntry(22)==0) {  //si hay lugares de estacionamiento, o si el cartel ya esta prendido
+        	//	System.out.println("me fui t de cartel");
         		return false;
         	}
         	RealMatrix marcadoNuevo;

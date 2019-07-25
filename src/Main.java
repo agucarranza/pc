@@ -25,17 +25,24 @@ public class Main {
                 (new PInvariant[]
                         {
                                 //faltan actualizar p invariantes, y obvio las transiciones por hilo
-                                new PInvariant(new int[]{9,4,5,6}, 10), // LUGARES DE ESTACIONAMIENTO
-                                new PInvariant(new int[]{11,12}, 1), // CAJA
-                                new PInvariant(new int[]{0,10,11,1,2,3,4,5,6}, 40), // AUTOS TOTALES
-                                new PInvariant(new int[]{5,7}, 5), //LUGARES PISO 1
-                                new PInvariant(new int[]{6,8}, 5), //LUGARES PISO 2
+                                new PInvariant(new int[]{1,10,12,13,14,17,19,2,4,6,8,23}, 86), //AUTOS TOTALES
+                                new PInvariant(new int[]{19,20,23}, 1), // CAJA
+                                new PInvariant(new int[]{10,12,13,21,8}, 60), // LUGARES DE ESTACIONAMIENTO
+                                new PInvariant(new int[]{10,11}, 30), //LUGARES PISO 1
+                                new PInvariant(new int[]{13,15,12}, 30), //LUGARES PISO 2
+                                new PInvariant(new int[]{12,14,16}, 1), //RAMPA
+                                new PInvariant(new int[]{17,18}, 2), //LUGARES SALIDA
+                                new PInvariant(new int[]{2,3}, 2), //CALLE ENTRADA 1
+                                new PInvariant(new int[]{4,5}, 2), //CALLE ENTRADA 2
+                                new PInvariant(new int[]{6,7}, 2), //CALLE ENTRADA 3
+                                new PInvariant(new int[]{9,8}, 2), //LUGARES ENTRADA
+                                new PInvariant(new int[]{0,22}, 1), //CARTEL
                         });
 
 
-        int[] t1 = {0};
+        int[] t1 = {0,16};
         int[] t2 = {1};
-        int[] t3 = {12};
+        int[] t3 = {13,15};
         int[] t4 = {2};
         int[] t5 = {3};
         int[] t6 = {4};
@@ -44,12 +51,11 @@ public class Main {
         int[] t9 = {7};
         int[] t10 = {10};
         int[] t11 = {11};
-        int[] t12 = {9};
+        int[] t12 = {9,12};
         int[] t13 = {8};
-        int[] t14 = {13};
-
-
-        ListaTareas.add(new Tarea(monitor, t1));
+        int[] t14 = {14,17};
+    
+        ListaTareas.add(new Tarea(monitor, t12));
         ListaTareas.add(new Tarea(monitor, t2));
         ListaTareas.add(new Tarea(monitor, t3));
         ListaTareas.add(new Tarea(monitor, t4));
@@ -60,7 +66,7 @@ public class Main {
         ListaTareas.add(new Tarea(monitor, t9));
         ListaTareas.add(new Tarea(monitor, t10));
         ListaTareas.add(new Tarea(monitor, t11));
-        ListaTareas.add(new Tarea(monitor, t12));
+        ListaTareas.add(new Tarea(monitor, t1));
         ListaTareas.add(new Tarea(monitor, t13));
         ListaTareas.add(new Tarea(monitor, t14));
         Thread hilo;

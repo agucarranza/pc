@@ -6,6 +6,7 @@ import org.apache.commons.math3.linear.RealVector;
 
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
+import static org.junit.Assert.assertTrue;
 
 public class GestorDeMonitor {
 
@@ -32,8 +33,8 @@ public class GestorDeMonitor {
     	
     	mutex.acquire();
     	while (!red.disparar(t)) {
-            mutex.release();
-            colas.encolar(t);
+    		mutex.release();
+    		colas.encolar(t);
             mutex.acquire();
         }
     
@@ -41,9 +42,9 @@ public class GestorDeMonitor {
     	  RealVector v_sensibilizadas = red.sensibilizadas();
           RealVector v_colas = colas.quienesEstan();
           RealVector m = v_sensibilizadas.ebeMultiply(v_colas);
-                 Log.log.log(Level.INFO, (in++) + "\tDISPARE!\t Marcado: " + red.getMarcadoActual().toString().substring(20) + "\t" + Thread.currentThread().getName() + "\tSensi:" + v_sensibilizadas.toString() + "\tT:" + t + "\tColas: " + v_colas.toString() + "\tm: " + m.toString() + "\tPolitica: " + politica.cual(m));
-         // System.out.println(t);
-        //  assertTrue(this.red.checkPInvariant());  descomentar cuando esten cargadas las p invariantes en el main
+          //       Log.log.log(Level.INFO, (in++) + "\tDISPARE!\t Marcado: " + red.getMarcadoActual().toString().substring(20) + "\t" + Thread.currentThread().getName() + "\tSensi:" + v_sensibilizadas.toString() + "\tT:" + t + "\tColas: " + v_colas.toString() + "\tm: " + m.toString() + "\tPolitica: " + politica.cual(m));
+          System.out.println(t);
+          assertTrue(this.red.checkPInvariant()); 
           if (!isCero(m)) {
               colas.desencolar(politica.cual(m));
           }
