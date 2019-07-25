@@ -38,7 +38,7 @@ public class RdP {
         this.beta = Tools.parseFile(beta).getRowVector(0);
         timeStamp = new long[transiciones];
         Arrays.fill(timeStamp, 0);
-        Log.log.log(Level.INFO,"INICIO\t\t Marcado: "+getMarcadoActual().toString().substring(20)+"\t"+ currentThread().getName());
+        Log.log.log(Level.INFO, "INICIO\t\t Marcado: " + marcadoActual.toString().substring(20) + "\t" + currentThread().getName());
     }
 
     /*
@@ -127,15 +127,11 @@ public class RdP {
         return transiciones;
     }
 
-    RealMatrix getMarcadoActual() {
-        return marcadoActual;
-    }
-    
     public void setPInvariants(PInvariant[] inv){
         this.invariantes = inv;
     }
-    
-    public boolean checkPInvariant(){
+
+    boolean checkPInvariant() {
     //	System.out.println("entra assert");
         for(PInvariant inv: this.invariantes){
             int[] plist = inv.getPlaza();
@@ -148,17 +144,6 @@ public class RdP {
         return true;
       
     }
-
-    /**
-     * tiempoSensibilizada es la diferencia entre el tiempo actual y el tiempo almacenado en timestamp.
-     * @param transicion Transición
-     * @param tiempo Es el instante actual.
-     * @return Si beta no tiene tiempo, controla alfa. tiempoSensibilizada debe ser mayor que alfa.
-     *          tiempoSensibilizada tiene que estar entre alfa y beta para que retorne true.
-     * ENTIEMPO de cristian.
-     *
-     */
-
 
     /**
      * Método para saber si una transición es temporizada o inmediata.

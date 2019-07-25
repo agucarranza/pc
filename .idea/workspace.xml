@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eb768c9-8b36-4676-8073-79e9e278fc18" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/pc/META-INF/pc.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pc/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pc/log/Log.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pc/monitor/Colas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pc/monitor/GestorDeMonitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pc/monitor/Politicas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pc/monitor/RdP.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pc/monitor/Tarea.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/pc/monitor/Tools.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/alfa.csv" beforeDir="false" afterPath="$PROJECT_DIR$/petri-nets/alfa.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/beta.csv" beforeDir="false" afterPath="$PROJECT_DIR$/petri-nets/beta.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monitor/RdP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/RdP.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +87,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/dict-es/hyph_es_ANY.dic" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -172,7 +169,10 @@
       <workItem from="1563833305662" duration="1671000" />
       <workItem from="1563886830436" duration="17519000" />
       <workItem from="1563971871262" duration="6034000" />
-      <workItem from="1563986524070" duration="13088000" />
+      <workItem from="1563986524070" duration="13748000" />
+      <workItem from="1564074260656" duration="80000" />
+      <workItem from="1564074382688" duration="26000" />
+      <workItem from="1564089203514" duration="2303000" />
     </task>
     <task id="LOCAL-00001" summary="Creados los hilos, faltan las politicas">
       <created>1561432636889</created>
@@ -342,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564008744669</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="borro binarios">
+      <created>1564008921873</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1564008921873</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -405,7 +412,8 @@
     <MESSAGE value="diccionario y separo politicas" />
     <MESSAGE value="ordenado el codigo . separo la politica" />
     <MESSAGE value="cambio archivos de nombre, modificados los constructores" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambio archivos de nombre, modificados los constructores" />
+    <MESSAGE value="borro binarios" />
+    <option name="LAST_COMMIT_MESSAGE" value="borro binarios" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
