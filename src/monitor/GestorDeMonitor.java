@@ -33,8 +33,18 @@ public class GestorDeMonitor {
     	mutex.acquire();
     	while (!red.disparar(t)) {
     		mutex.release();
-    		colas.encolar(t);
-            mutex.acquire();
+            if (red.getVentana() < 0 && red.sensibilizadas().getEntry(t) == 0) //System.err.println("caca");
+                colas.encolar(t);
+            else {
+                try {
+                    Thread.sleep(red.getVentana());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                mutex.acquire();
+                Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+            }
         }
     
     		 try{

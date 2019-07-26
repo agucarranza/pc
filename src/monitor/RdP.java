@@ -63,6 +63,7 @@ public class RdP {
             RealMatrix marcado = marcadoActual.transpose();
             marcadoNuevo = marcado.add(incidencia.multiply(disparo));
             marcadoActual = marcadoNuevo.transpose();
+            calculoTimeStamp();
 
             	
             return true;
@@ -72,8 +73,14 @@ public class RdP {
         else {
         if ((transicion < 0) || (transicion > transiciones))
             throw new RuntimeException("Numero de transicion fuera de limites");
-        
-        if (sensibilizadas().getEntry(transicion) != 1)
+
+            if (sensibilizadas().getEntry(transicion) != 1) {
+                ventana = 0;
+                return false;
+            }
+            ventana = getVentanaDeTiempo(transicion);
+            chequearPrioridad();
+            if (ventana != 0)
             return false;
 
         RealMatrix marcadoNuevo;
@@ -176,7 +183,9 @@ public class RdP {
         else if (this.cumpleVentanaDeTiempo(transicion, ahora) == 0)
             return dormir(transicion, ahora);
         // Es una transición sin tiempo o con tiempo DESPUÉS de la ventana.
+        System.exit(666);
         return -1;
+
     }
 
     /**
