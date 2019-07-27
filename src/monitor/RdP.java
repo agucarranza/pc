@@ -41,14 +41,14 @@ public class RdP {
         Log.log.log(Level.INFO, "INICIO\t\t Marcado: " + marcadoActual.toString().substring(20) + "\t" + currentThread().getName());
     }
 
-    /*
+    /**
     disparar() utiliza la función de estado para generar un nuevo estado a partir del
     actual.
     Devuelve k = true cuando pudo disparar una transicion. False cuando no encontró
     ninguna transición para disparar en sensibilizadas.
      */
 
-    boolean disparar(int transicion) throws RuntimeException {
+    synchronized boolean disparar(int transicion) throws RuntimeException {
       
         	
         if (transicion == 0) {   //Inhibidor
@@ -63,9 +63,6 @@ public class RdP {
             RealMatrix marcado = marcadoActual.transpose();
             marcadoNuevo = marcado.add(incidencia.multiply(disparo));
             marcadoActual = marcadoNuevo.transpose();
-            calculoTimeStamp();
-
-            	
             return true;
         	        	
         }
@@ -88,13 +85,12 @@ public class RdP {
         RealMatrix marcado = marcadoActual.transpose();
         marcadoNuevo = marcado.add(incidencia.multiply(disparo));
         marcadoActual = marcadoNuevo.transpose();
-
-        	
+            calculoTimeStamp();
         return true;
         }
     }
 
-    /*
+    /**
     Este método utiliza la ecuación de estado de la RDP para intentar disparar
     todas las transiciones (de a una por vez) con el bucle. Aquellas cuyo nuevo estado
     es mayor o igual que 0, están habilitadas. Las demás están deshabilitadas. Al principio
@@ -116,10 +112,14 @@ public class RdP {
                 vector_sensibilizadas.setEntry(k, 1);
             disparo.setEntry(k, 0, 0);
         }
+        RealVector cero = new ArrayRealVector(transiciones);
+        cero.set(0);
+        if (vector_sensibilizadas.toString().equals(cero.toString()))
+            System.exit(-99);
         return vector_sensibilizadas;
     }
 
-    /*
+    /**
     Este método crea un vector con todos los valores ceros salvo el valor que le pase
     por el parámetro transicion. Se usa en el método disparar para implementar la ecuación de estado.
      */
@@ -195,7 +195,7 @@ public class RdP {
      * @param tiempo     Es el instante actual.
      * @return Si beta no tiene tiempo, controla alfa. tiempoSensibilizada debe ser mayor que alfa.
      * tiempoSensibilizada tiene que estar entre alfa y beta para que retorne true.
-     * ENTIEMPO de cristian.
+     * "ENTIEMPO" de cristian.
      */
 
     private int cumpleVentanaDeTiempo(int transicion, double tiempo) {
@@ -257,5 +257,7 @@ public class RdP {
     }
 
 
-  
+    RealMatrix getMarcadoActual() {
+        return marcadoActual;
+    }
 }

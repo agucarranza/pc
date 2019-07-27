@@ -1,9 +1,11 @@
 package monitor;
 
 
+import log.Log;
 import org.apache.commons.math3.linear.RealVector;
 
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -33,8 +35,10 @@ public class GestorDeMonitor {
     	mutex.acquire();
     	while (!red.disparar(t)) {
     		mutex.release();
-            if (red.getVentana() < 0 && red.sensibilizadas().getEntry(t) == 0) //System.err.println("caca");
+            if (red.getVentana() <= 0 && red.sensibilizadas().getEntry(t) == 0) {
                 colas.encolar(t);
+
+            }
             else {
                 try {
                     Thread.sleep(red.getVentana());
@@ -51,7 +55,7 @@ public class GestorDeMonitor {
     	  RealVector v_sensibilizadas = red.sensibilizadas();
           RealVector v_colas = colas.quienesEstan();
           RealVector m = v_sensibilizadas.ebeMultiply(v_colas);
-          //       Log.log.log(Level.INFO, (in++) + "\tDISPARE!\t Marcado: " + red.getMarcadoActual().toString().substring(20) + "\t" + Thread.currentThread().getName() + "\tSensi:" + v_sensibilizadas.toString() + "\tT:" + t + "\tColas: " + v_colas.toString() + "\tm: " + m.toString() + "\tPolitica: " + politica.cual(m));
+                 Log.log.log(Level.INFO, (in++) + "\tDISPARE!\t Marcado: " + red.getMarcadoActual().toString().substring(20) + "\t" + Thread.currentThread().getName() + "\tSensi:" + v_sensibilizadas.toString() + "\tT:" + t + "\tColas: " + v_colas.toString() + "\tm: " + m.toString() + "\tPolitica: " + politica.cual(m));
           System.out.println(t);
           assertTrue(this.red.checkPInvariant()); 
           if (!isCero(m)) {

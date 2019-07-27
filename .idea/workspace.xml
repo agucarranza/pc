@@ -4,8 +4,6 @@
     <list default="true" id="7eb768c9-8b36-4676-8073-79e9e278fc18" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logfile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petri-nets/alfa.csv" beforeDir="false" afterPath="$PROJECT_DIR$/petri-nets/alfa.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petri-nets/beta.csv" beforeDir="false" afterPath="$PROJECT_DIR$/petri-nets/beta.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/monitor/RdP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/RdP.java" afterDir="false" />
     </list>
@@ -89,7 +87,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/lib" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="last_opened_file_path" value="$USER_HOME$/software/dictionaries-master/es/hyph_es_ANY.dic" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -102,6 +100,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
+    <property name="two.files.diff.last.used.file" value="$USER_HOME$/Escritorio/incidencianeg_agus.csv" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -138,7 +137,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="2" Folder0="$PROJECT_DIR$/lib/dict-es" Folder1="$PROJECT_DIR$/lib/dict-es" CustomDictionaries="2" CustomDictionary0="$PROJECT_DIR$/lib/dict-es/es_ANY.dic" CustomDictionary1="$PROJECT_DIR$/lib/dict-es/hyph_es_ANY.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="4" Folder0="$PROJECT_DIR$/lib/dict-es" Folder1="$PROJECT_DIR$/lib/dict-es" Folder2="$USER_HOME$/software/dictionaries-master/es" Folder3="$USER_HOME$/software/dictionaries-master/es" CustomDictionaries="4" CustomDictionary0="$PROJECT_DIR$/lib/dict-es/es_ANY.dic" CustomDictionary1="$PROJECT_DIR$/lib/dict-es/hyph_es_ANY.dic" CustomDictionary2="$USER_HOME$/software/dictionaries-master/es/es_ANY.dic" CustomDictionary3="$USER_HOME$/software/dictionaries-master/es/hyph_es_ANY.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -173,7 +172,9 @@
       <workItem from="1563986524070" duration="13748000" />
       <workItem from="1564074260656" duration="80000" />
       <workItem from="1564074382688" duration="26000" />
-      <workItem from="1564089203514" duration="11242000" />
+      <workItem from="1564089203514" duration="15155000" />
+      <workItem from="1564145540674" duration="8421000" />
+      <workItem from="1564185809177" duration="390000" />
     </task>
     <task id="LOCAL-00001" summary="Creados los hilos, faltan las politicas">
       <created>1561432636889</created>
@@ -357,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564092090135</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="agrego metodos con tiempo, matrices sin tiempo. codigo funcionando.">
+      <created>1564105409601</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1564105409601</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -422,7 +430,8 @@
     <MESSAGE value="cambio archivos de nombre, modificados los constructores" />
     <MESSAGE value="borro binarios" />
     <MESSAGE value="agrego tiempos en las matrices alfa y beta. procedo a implementar funcionalidad de tiempo en métodos" />
-    <option name="LAST_COMMIT_MESSAGE" value="agrego tiempos en las matrices alfa y beta. procedo a implementar funcionalidad de tiempo en métodos" />
+    <MESSAGE value="agrego metodos con tiempo, matrices sin tiempo. codigo funcionando." />
+    <option name="LAST_COMMIT_MESSAGE" value="agrego metodos con tiempo, matrices sin tiempo. codigo funcionando." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -434,11 +443,6 @@
           <url>file://$PROJECT_DIR$/src/monitor/RdP.java</url>
           <line>186</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/monitor/RdP.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -469,77 +473,5 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>org.junit.jupiter:junit-jupiter-api:5.0.0</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
