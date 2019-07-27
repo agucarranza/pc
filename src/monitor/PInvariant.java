@@ -9,11 +9,11 @@ public class PInvariant{
         this.valor = valor;
     }
 
-    public int[] getPlaza(){
+    int[] getPlaza() {
         return this.plaza;
     }
 
-    public int getValor(){
+    int getValor() {
         return this.valor;
     }
 }

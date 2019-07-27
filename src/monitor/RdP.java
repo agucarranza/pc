@@ -38,6 +38,7 @@ public class RdP {
         this.beta = Tools.parseFile(beta).getRowVector(0);
         timeStamp = new long[transiciones];
         Arrays.fill(timeStamp, 0);
+        calculoTimeStamp();
         Log.log.log(Level.INFO, "INICIO\t\t Marcado: " + marcadoActual.toString().substring(20) + "\t" + currentThread().getName());
     }
 
@@ -203,10 +204,10 @@ public class RdP {
      * "EnTiempo" de cristian.
      */
 
-    private int cumpleVentanaDeTiempo(int transicion, double tiempo) {
+    private int cumpleVentanaDeTiempo(int transicion, long tiempo) {
         double alfa = this.alfa.getEntry(transicion);
         double beta = this.beta.getEntry(transicion);
-        double tiempoSensibilizada = tiempo - timeStamp[transicion];
+        long tiempoSensibilizada = tiempo - timeStamp[transicion];
         if (beta == 0) {
             if (alfa > tiempoSensibilizada)
                 return 0;
