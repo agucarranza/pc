@@ -16,7 +16,7 @@ public class RdP {
 
     private int transiciones;
     private RealMatrix incidencia;
-    private RealMatrix incidencianeg;
+    private RealMatrix incidenciaNeg;
     private RealMatrix marcadoActual;
     private RealVector alfa;
     private RealVector beta;
@@ -26,12 +26,12 @@ public class RdP {
 
     public RdP(String incidenceFile,
                String markingFile,
-               String incidencianegFile,
+               String incidenciaNegFile,
                String alfa,
                String beta) {
 
         incidencia = Tools.parseFile(incidenceFile);
-        incidencianeg = Tools.parseFile(incidencianegFile);
+        incidenciaNeg = Tools.parseFile(incidenciaNegFile);
         marcadoActual = Tools.parseFile(markingFile); //cargo el marcado inicial
         transiciones = incidencia.getColumnDimension();
         this.alfa = Tools.parseFile(alfa).getRowVector(0);
@@ -63,6 +63,7 @@ public class RdP {
             RealMatrix marcado = marcadoActual.transpose();
             marcadoNuevo = marcado.add(incidencia.multiply(disparo));
             marcadoActual = marcadoNuevo.transpose();
+            calculoTimeStamp();
             return true;
         	        	
         }
@@ -107,7 +108,7 @@ public class RdP {
 
         for (int k = 0; k < transiciones; k++) { //Dispara todas las transiciones
             disparo.setEntry(k, 0, 1);
-            vector = marcado.add(incidencianeg.multiply(disparo)).getColumnVector(0);
+            vector = marcado.add(incidenciaNeg.multiply(disparo)).getColumnVector(0);
             if (vector.getMinValue() >= 0)
                 vector_sensibilizadas.setEntry(k, 1);
             disparo.setEntry(k, 0, 0);
@@ -143,9 +144,9 @@ public class RdP {
         for(PInvariant inv: this.invariantes){
             int[] plist = inv.getPlaza();
             int valor = inv.getValor();
-            RealVector vaux = new ArrayRealVector(this.incidencia.getRowDimension());
-            Arrays.stream(plist).forEach(i -> vaux.setEntry(i, 1.));
-            if(valor != (int) vaux.dotProduct(this.marcadoActual.getRowVector(0)))return false;
+            RealVector vAux = new ArrayRealVector(this.incidencia.getRowDimension());
+            Arrays.stream(plist).forEach(i -> vAux.setEntry(i, 1.));
+            if (valor != (int) vAux.dotProduct(this.marcadoActual.getRowVector(0))) return false;
         }
       //  System.out.println("sale assert");
         return true;
@@ -177,11 +178,15 @@ public class RdP {
         if (!this.tieneTiempo(transicion))
             return 0;
             // Es una transición con tiempo y está DENTRO de la ventana.
-        else if (this.cumpleVentanaDeTiempo(transicion, ahora) == 1)
+        else if (this.cumpleVentanaDeTiempo(transicion, ahora) == 1) {
+            System.out.println("T: " + transicion + "\tLlegaste a tiempo.");
             return 0;
+        }
             // Es una transición con tiempo y está ANTES de la ventana.
-        else if (this.cumpleVentanaDeTiempo(transicion, ahora) == 0)
+        else if (this.cumpleVentanaDeTiempo(transicion, ahora) == 0) {
+            System.out.println("T: " + transicion + "\tEstoy esperando. Tiempo: " + dormir(transicion, ahora));
             return dormir(transicion, ahora);
+        }
         // Es una transición sin tiempo o con tiempo DESPUÉS de la ventana.
         System.exit(666);
         return -1;
@@ -195,13 +200,13 @@ public class RdP {
      * @param tiempo     Es el instante actual.
      * @return Si beta no tiene tiempo, controla alfa. tiempoSensibilizada debe ser mayor que alfa.
      * tiempoSensibilizada tiene que estar entre alfa y beta para que retorne true.
-     * "ENTIEMPO" de cristian.
+     * "EnTiempo" de cristian.
      */
 
     private int cumpleVentanaDeTiempo(int transicion, double tiempo) {
         double alfa = this.alfa.getEntry(transicion);
         double beta = this.beta.getEntry(transicion);
-        double tiempoSensibilizada = tiempo - timeStamp[transicion]; //timeStamp.get(transicion);
+        double tiempoSensibilizada = tiempo - timeStamp[transicion];
         if (beta == 0) {
             if (alfa > tiempoSensibilizada)
                 return 0;

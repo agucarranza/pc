@@ -55,19 +55,19 @@ public class GestorDeMonitor {
     	  RealVector v_sensibilizadas = red.sensibilizadas();
           RealVector v_colas = colas.quienesEstan();
           RealVector m = v_sensibilizadas.ebeMultiply(v_colas);
-          System.out.println(t);
+                 //System.out.println(t);
           assertTrue(this.red.checkPInvariant()); 
           if (!isCero(m)) {
               colas.desencolar(politica.cual(m));
-              Log.log.log(Level.INFO, (in++) + "\tDISPARE!\t" + "\tT:" + t + "Marcado: " + red.getMarcadoActual().toString().substring(20) + "\t" + Thread.currentThread().getName() + "\tSensi:" + v_sensibilizadas.toString() + "\tColas: " + v_colas.toString() + "\tm: " + m.toString() + "\tPolitica: " + politica.cual(m));
+              Log.log.log(Level.INFO, (in++) + "\tDISPARE! " + "T:" + t + "\t\tMarcado: " + red.getMarcadoActual().toString().substring(20) + "\t" + Thread.currentThread().getName() + "\tSens:" + v_sensibilizadas.toString() + "\tColas: " + v_colas.toString() + "\tm: " + m.toString() + "\tPolitica: " + politica.cual(m));
           } else
-              Log.log.log(Level.INFO, (in++) + "\tDISPARE!\t" + "\tT:" + t + "Marcado: " + red.getMarcadoActual().toString().substring(20) + "\t" + Thread.currentThread().getName() + "\tSensi:" + v_sensibilizadas.toString() + "\tColas: " + v_colas.toString() + "\tm: " + m.toString());
+              Log.log.log(Level.INFO, (in++) + "\tDISPARE! " + "T:" + t + "\t\tMarcado: " + red.getMarcadoActual().toString().substring(20) + "\t" + Thread.currentThread().getName() + "\tSens:" + v_sensibilizadas.toString() + "\tColas: " + v_colas.toString() + "\tm: " + m.toString());
 
 
              } catch (AssertionError e) {
              System.out.println
              ("Msg From: "+Thread.currentThread().getName()+
-              "\n[!] ERROR: Algun invariante no se cumple, terminando");
+                     "\n[!] ERROR: Alguna invariante no se cumple, terminando");
          System.exit(-1);
     	 }
 
