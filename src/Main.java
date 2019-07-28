@@ -32,7 +32,7 @@ public class Main {
                                 new PInvariant(new int[]{10,11}, 30), //LUGARES PISO 1
                                 new PInvariant(new int[]{13,15,12}, 30), //LUGARES PISO 2
                                 new PInvariant(new int[]{12,14,16}, 1), //RAMPA
-                                new PInvariant(new int[]{17,18}, 2), //LUGARES SALIDA
+                                new PInvariant(new int[]{17,18,14}, 2), //LUGARES SALIDA
                                 new PInvariant(new int[]{2,3}, 2), //CALLE ENTRADA 1
                                 new PInvariant(new int[]{4,5}, 2), //CALLE ENTRADA 2
                                 new PInvariant(new int[]{6,7}, 2), //CALLE ENTRADA 3
@@ -52,9 +52,10 @@ public class Main {
         int[] t9 = {7};
         int[] t10 = {10};
         int[] t11 = {11};
-        int[] t12 = {9,12};
+        int[] t12 = {9};
         int[] t13 = {8};
         int[] t14 = {14,17};
+        int[] t15 = {12};
     
         ListaTareas.add(new Tarea(monitor, t12));
         ListaTareas.add(new Tarea(monitor, t2));
@@ -70,6 +71,7 @@ public class Main {
         ListaTareas.add(new Tarea(monitor, t1));
         ListaTareas.add(new Tarea(monitor, t13));
         ListaTareas.add(new Tarea(monitor, t14));
+        ListaTareas.add(new Tarea(monitor, t15));
         Thread hilo;
 
         for(Tarea tarea: ListaTareas){
