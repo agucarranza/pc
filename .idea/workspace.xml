@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eb768c9-8b36-4676-8073-79e9e278fc18" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logfile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petri-nets/alfa.csv" beforeDir="false" afterPath="$PROJECT_DIR$/petri-nets/alfa.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monitor/PInvariant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/PInvariant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monitor/RdP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/RdP.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,19 +25,18 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <excluded-from-favorite>
-      <branch-storage>
-        <map>
-          <entry type="REMOTE">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </excluded-from-favorite>
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="agustin &lt;agustincarranza@alumnos.unc.edu.ar&gt;" />
+      </list>
+    </option>
+    <option name="UPDATE_TYPE" value="REBASE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="tiempoposta" />
+      </map>
+    </option>
     <favorite-branches>
       <branch-storage>
         <map>
@@ -55,18 +50,19 @@
         </map>
       </branch-storage>
     </favorite-branches>
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="agustin &lt;agustincarranza@alumnos.unc.edu.ar&gt;" />
-      </list>
-    </option>
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="tiempoposta" />
-      </map>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -89,7 +85,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/lib" />
-    <property name="last_opened_file_path" value="$USER_HOME$/software/dictionaries-master/es/hyph_es_ANY.dic" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/diagramas" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -101,7 +97,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="two.files.diff.last.used.file" value="$USER_HOME$/Escritorio/incidencianeg_agus.csv" />
   </component>
   <component name="RecentsManager">
@@ -178,6 +174,9 @@
       <workItem from="1564145540674" duration="8421000" />
       <workItem from="1564185809177" duration="4476000" />
       <workItem from="1564259060006" duration="3321000" />
+      <workItem from="1564345250197" duration="1224000" />
+      <workItem from="1564352858610" duration="47000" />
+      <workItem from="1564352945610" duration="1466000" />
     </task>
     <task id="LOCAL-00001" summary="Creados los hilos, faltan las politicas">
       <created>1561432636889</created>
