@@ -146,7 +146,6 @@ public class RdP {
 
     /**
      * Controla que se cumplan los P-invariantes obtenidos de la red de Petri con el software PIPE.
-     *
      * @return true si cumple con el P-invariante, false si no.
      */
 

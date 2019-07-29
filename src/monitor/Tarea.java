@@ -14,6 +14,10 @@ public class Tarea implements Runnable {
         this.transicion = transicion;
     }
 
+    /**
+     * Función implementada a partir de la interface Runnable para poder trabajar con multi-thread y cuya
+     * función es disparar infinitamente las transiciones asignadas.
+     */
     @Override
     public void run() {
         try {

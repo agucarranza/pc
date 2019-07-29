@@ -22,7 +22,6 @@ class Colas {
 
 	/**
 	 * Este método libera un permiso del semáforo correspondiente a la transición del índice.
-	 *
 	 * @param i El índice de la transición que se va a sacar de la cola.
 	 */
 

@@ -10,11 +10,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Incluye métodos comunes a todas las clases para realizar operaciones de parsing.
+ */
 class Tools {
 
     /**
-    Esta función abre el archivo que se le pasa por parámetro y retorna una RealMatrix con los datos. Descarta
-    la primer fila y la primer columna que son los índices de plazas y transiciones.
+     Esta función abre el archivo que se le pasa por parámetro y retorna una RealMatrix con los datos. Descarta
+     la primer fila y la primer columna que son los índices de plazas y transiciones.
+     @param fileName La ruta del archivo que se quiere convertir.
+     @return Una matriz con los valores cargados a partir del String pasado por parámetro.
      */
 
     static RealMatrix parseFile(String fileName) {
