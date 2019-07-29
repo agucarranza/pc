@@ -41,7 +41,7 @@ public class Main {
                         });
 
 
-        int[] t1 = {0,16};
+        /*int[] t1 = {0,16};
         int[] t2 = {1};
         int[] t3 = {13,15};
         int[] t4 = {2};
@@ -56,8 +56,27 @@ public class Main {
         int[] t13 = {8};
         int[] t14 = {14,17};
         int[] t15 = {12};
+        */
+        ListaTareas.add(new Tarea(monitor, new int[]{0, 16}));
+        ListaTareas.add(new Tarea(monitor, new int[]{1}));
+        ListaTareas.add(new Tarea(monitor, new int[]{13, 15}));
+        ListaTareas.add(new Tarea(monitor, new int[]{2}));
+        ListaTareas.add(new Tarea(monitor, new int[]{3}));
+        ListaTareas.add(new Tarea(monitor, new int[]{4}));
+        ListaTareas.add(new Tarea(monitor, new int[]{5}));
+        ListaTareas.add(new Tarea(monitor, new int[]{6}));
+        ListaTareas.add(new Tarea(monitor, new int[]{7}));
+        ListaTareas.add(new Tarea(monitor, new int[]{10}));
+        ListaTareas.add(new Tarea(monitor, new int[]{11}));
+        ListaTareas.add(new Tarea(monitor, new int[]{9}));
+        ListaTareas.add(new Tarea(monitor, new int[]{8}));
+        ListaTareas.add(new Tarea(monitor, new int[]{14, 17}));
+        ListaTareas.add(new Tarea(monitor, new int[]{12}));
+
+
+
     
-        ListaTareas.add(new Tarea(monitor, t12));
+        /*ListaTareas.add(new Tarea(monitor, t12));
         ListaTareas.add(new Tarea(monitor, t2));
         ListaTareas.add(new Tarea(monitor, t3));
         ListaTareas.add(new Tarea(monitor, t4));
@@ -71,7 +90,7 @@ public class Main {
         ListaTareas.add(new Tarea(monitor, t1));
         ListaTareas.add(new Tarea(monitor, t13));
         ListaTareas.add(new Tarea(monitor, t14));
-        ListaTareas.add(new Tarea(monitor, t15));
+        ListaTareas.add(new Tarea(monitor, t15));*/
         Thread hilo;
 
         for(Tarea tarea: ListaTareas){

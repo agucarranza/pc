@@ -1,4 +1,9 @@
 package monitor;
+
+/**
+ * Tarea ejecuta en un mismo thread todas las transiciones que se le pasan por parámetro. Esto ocurre en un
+ * bucle infinito y sólo se interrumpe si se detiene la ejecución del programa de manera externa.
+ */
 public class Tarea implements Runnable {
 
     private GestorDeMonitor monitor;
@@ -12,17 +17,13 @@ public class Tarea implements Runnable {
     @Override
     public void run() {
         try {
-        	while (true) {
-        	
-            for (int i =0;i<transicion.length;i++) {
-                monitor.dispararTransicion(transicion[i]);
+            while (true) {
+                for (int value : transicion) {
+                    monitor.dispararTransicion(value);
                 }
-          //  System.out.println(Thread.currentThread().getName()+" se murio");
-            
-        	 }
-        }
-        catch (InterruptedException e) {
-            System.out.println(e);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 class Tools {
 
-    /*
+    /**
     Esta función abre el archivo que se le pasa por parámetro y retorna una RealMatrix con los datos. Descarta
     la primer fila y la primer columna que son los índices de plazas y transiciones.
      */

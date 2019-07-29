@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7eb768c9-8b36-4676-8073-79e9e278fc18" name="Default Changelist" comment="">
+    <list default="true" id="7eb768c9-8b36-4676-8073-79e9e278fc18" name="Default Changelist" comment="Tiempo con alfa funcionando. Falta probar que tenga beta.">
+      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.bak_000f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.bak_001d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.bak_002d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.bak_003d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.bak_004d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.vbak" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logfile.txt.lck" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/agustin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/agustin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diagramas/diagramas.vpp" beforeDir="false" afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logfile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/alfa.csv" beforeDir="false" afterPath="$PROJECT_DIR$/petri-nets/alfa.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petri-nets/beta.csv" beforeDir="false" afterPath="$PROJECT_DIR$/petri-nets/beta.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monitor/Colas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/Colas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monitor/RdP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/RdP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monitor/Tarea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/Tarea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monitor/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/Tools.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -463,15 +481,6 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/monitor/RdP.java</url>
-          <line>209</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="getVentanaDeTiempo(transicion)" />
