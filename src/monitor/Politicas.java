@@ -4,6 +4,9 @@ import org.apache.commons.math3.linear.ArrayRealVector;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.linear.RealVector;
 
+/**
+ * Clase que incluye la función que decide la transición que se va a desencolar cuando es llamada por el monitor.
+ */
 class Politicas {
     private RealMatrix politica;
 

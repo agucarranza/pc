@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"monitor","l":"Colas"},{"p":"monitor","l":"GestorDeMonitor"},{"p":"log","l":"Log"},{"p":"<Unnamed>","l":"Main"},{"p":"monitor","l":"PInvariant"},{"p":"monitor","l":"Politicas"},{"p":"monitor","l":"RdP"},{"p":"monitor","l":"Tarea"},{"p":"monitor","l":"Tools"}]
