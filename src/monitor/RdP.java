@@ -75,7 +75,7 @@ public class RdP {
                 //System.out.println("me fui t de cartel");
                 return false;
             }
-            System.out.println("CARTEL PRENDIDO !!!");
+           // System.out.println("CARTEL PRENDIDO !!!");
             //return true;
         }
 
@@ -191,7 +191,7 @@ public class RdP {
         }
         // Es una transición con tiempo y está ANTES de la ventana.
         else if (this.cumpleVentanaDeTiempo(transicion, ahora) == 0) {
-            System.out.println("T: " + transicion + "\tEstoy esperando. Tiempo: " + dormir(transicion, ahora));
+            //  System.out.println("T: " + transicion + "\tEstoy esperando. Tiempo: " + dormir(transicion, ahora));
             return dormir(transicion, ahora);
         }
         // Es una transición con tiempo DESPUÉS de la ventana.

@@ -4,6 +4,9 @@ package monitor;
 import log.Log;
 import org.apache.commons.math3.linear.RealVector;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 
@@ -56,10 +59,14 @@ public class GestorDeMonitor {
             }
         }
         try {
+            BufferedWriter out = new BufferedWriter(new FileWriter("/home/agustin/escritorio/log2020.txt", true));
+
             RealVector v_sensibilizadas = red.sensibilizadas();
             RealVector v_colas = colas.quienesEstan();
             RealVector m = v_sensibilizadas.ebeMultiply(v_colas);
             //System.out.println(t);
+            out.write("T" + t + "\n");
+            out.close();
             assertTrue(this.red.checkPInvariant());
             if (!isCero(m)) {
                 colas.desencolar(politica.cual(m));
@@ -77,6 +84,8 @@ public class GestorDeMonitor {
             System.out.println("Msg From: " + Thread.currentThread().getName() +
                     "\n[!] ERROR: Alguna invariante no se cumple, terminando");
             System.exit(-1);
+        } catch (IOException e) {
+            System.out.println("exception occurred" + e);
         }
         mutex.release();
     }

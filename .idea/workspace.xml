@@ -2,99 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eb768c9-8b36-4676-8073-79e9e278fc18" name="Default Changelist" comment="Tiempo con alfa funcionando. Falta probar que tenga beta.">
-      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.bak_000f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.bak_001d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.bak_002d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.bak_003d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.bak_004d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/append.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.vbak" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/Main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/allclasses-index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/allclasses.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/allpackages-index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/constant-values.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/deprecated-list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/element-list" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/help-doc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-10.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-11.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-12.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-13.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-14.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-15.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-5.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-6.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-7.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-8.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index-files/index-9.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/external/jquery/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-bg_flat_0_aaaaaa_40x100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-bg_flat_75_ffffff_40x100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-bg_glass_55_fbf9ee_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-bg_glass_65_ffffff_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-bg_glass_75_dadada_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-bg_glass_95_fef1ec_1x400.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-icons_222222_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-icons_2e83ff_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-icons_454545_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-icons_888888_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/images/ui-icons_cd0a0a_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jquery-3.3.1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jquery-migrate-3.0.1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jquery-ui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jquery-ui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jquery-ui.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jquery-ui.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jquery-ui.structure.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jquery-ui.structure.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jszip-utils/dist/jszip-utils-ie.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jszip-utils/dist/jszip-utils-ie.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jszip-utils/dist/jszip-utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jszip-utils/dist/jszip-utils.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jszip/dist/jszip.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/jquery/jszip/dist/jszip.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/log/Log.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/log/package-summary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/log/package-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/member-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/member-search-index.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/monitor/Colas.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/monitor/GestorDeMonitor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/monitor/PInvariant.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/monitor/Politicas.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/monitor/RdP.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/monitor/Tarea.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/monitor/Tools.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/monitor/package-summary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/monitor/package-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/overview-summary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/overview-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/package-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/package-search-index.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/package-summary.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/package-tree.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/resources/glass.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/resources/x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/stylesheet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/type-search-index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/javadoc/type-search-index.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logfile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monitor/Colas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/Colas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monitor/Politicas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/Politicas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hola.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log2020.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/petri-nets/identidad-caso1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/petri-nets/identidad-caso2.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/t_inv/log-ejemp.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diagramas/diagramas.vpp" beforeDir="false" afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logfile.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/log/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/log/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/monitor/RdP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/RdP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monitor/Tarea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/Tarea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monitor/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/Tools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/t_inv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/t_inv/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/t_inv/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/t_inv/log.txt" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,12 +92,18 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -186,7 +120,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="two.files.diff.last.used.file" value="$USER_HOME$/Escritorio/incidencianeg_agus.csv" />
   </component>
   <component name="RecentsManager">
@@ -194,19 +128,20 @@
       <recent name="$PROJECT_DIR$/src/monitor" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="t_inv.Main" />
+      <module name="pc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="t_inv.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="pc" />
@@ -217,14 +152,26 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="4" Folder0="$PROJECT_DIR$/lib/dict-es" Folder1="$PROJECT_DIR$/lib/dict-es" Folder2="$USER_HOME$/software/dictionaries-master/es" Folder3="$USER_HOME$/software/dictionaries-master/es" CustomDictionaries="4" CustomDictionary0="$PROJECT_DIR$/lib/dict-es/es_ANY.dic" CustomDictionary1="$PROJECT_DIR$/lib/dict-es/hyph_es_ANY.dic" CustomDictionary2="$USER_HOME$/software/dictionaries-master/es/es_ANY.dic" CustomDictionary3="$USER_HOME$/software/dictionaries-master/es/hyph_es_ANY.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="4" Folder0="$PROJECT_DIR$/lib/dict-es" Folder1="$PROJECT_DIR$/lib/dict-es" Folder2="$USER_HOME$/software/dictionaries-master/es" Folder3="$USER_HOME$/software/dictionaries-master/es" CustomDictionaries="4" CustomDictionary0="$PROJECT_DIR$/lib/dict-es/es_ANY.dic" CustomDictionary1="$PROJECT_DIR$/lib/dict-es/hyph_es_ANY.dic" CustomDictionary2="$USER_HOME$/software/dictionaries-master/es/es_ANY.dic" CustomDictionary3="$USER_HOME$/software/dictionaries-master/es/hyph_es_ANY.dic" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -266,6 +213,17 @@
       <workItem from="1564345250197" duration="1224000" />
       <workItem from="1564352858610" duration="47000" />
       <workItem from="1564352945610" duration="1466000" />
+      <workItem from="1576441374314" duration="842000" />
+      <workItem from="1576543270525" duration="1854000" />
+      <workItem from="1576606448539" duration="9189000" />
+      <workItem from="1577635877095" duration="4000" />
+      <workItem from="1577804027192" duration="38000" />
+      <workItem from="1579487065479" duration="6000" />
+      <workItem from="1579487159620" duration="119000" />
+      <workItem from="1579487294368" duration="10633000" />
+      <workItem from="1582034973427" duration="25000" />
+      <workItem from="1582035032744" duration="5172000" />
+      <workItem from="1582402774920" duration="601000" />
     </task>
     <task id="LOCAL-00001" summary="Creados los hilos, faltan las politicas">
       <created>1561432636889</created>
@@ -487,15 +445,6 @@
     <option name="localTasksCounter" value="32" />
     <servers />
   </component>
-  <component name="TodoView" selected-index="3">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -559,7 +508,105 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="524" y="271" width="307" height="223" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1579487194273">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="524" y="271" width="307" height="223" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.27.1366.741@0.27.1366.741" timestamp="1579487194273" />
+    <state x="366" y="110" width="624" height="545" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1582034990786">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="366" y="110" width="624" height="545" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.27.1366.741@0.27.1366.741" timestamp="1582034990786" />
+    <state x="403" y="100" width="549" height="564" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog" timestamp="1579558501802">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="403" y="100" width="549" height="564" key="#com.intellij.refactoring.move.moveMembers.MoveMembersDialog/0.27.1366.741@0.27.1366.741" timestamp="1579558501802" />
+    <state x="417" y="227" width="521" height="310" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1576607444889">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="417" y="227" width="521" height="310" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.27.1366.741@0.27.1366.741" timestamp="1576607444889" />
+    <state x="3" y="27" width="1232" height="741" key="CommitChangelistDialog2" timestamp="1582404586563">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="3" y="27" width="1232" height="741" key="CommitChangelistDialog2/0.27.1366.741@0.27.1366.741" timestamp="1582404586563" />
+    <state width="1320" height="200" key="GridCell.Tab.0.bottom" timestamp="1582077235509">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="200" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1582077235509" />
+    <state width="1320" height="200" key="GridCell.Tab.0.center" timestamp="1582077235507">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="200" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1582077235507" />
+    <state width="1320" height="200" key="GridCell.Tab.0.left" timestamp="1582077235505">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="200" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1582077235505" />
+    <state width="1320" height="200" key="GridCell.Tab.0.right" timestamp="1582077235508">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="200" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1582077235508" />
+    <state width="1320" height="2" key="GridCell.Tab.1.bottom" timestamp="1579583824460">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="2" key="GridCell.Tab.1.bottom/0.27.1366.741@0.27.1366.741" timestamp="1579583824460" />
+    <state width="1320" height="2" key="GridCell.Tab.1.center" timestamp="1579583824459">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="2" key="GridCell.Tab.1.center/0.27.1366.741@0.27.1366.741" timestamp="1579583824459" />
+    <state width="1320" height="2" key="GridCell.Tab.1.left" timestamp="1579583824459">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="2" key="GridCell.Tab.1.left/0.27.1366.741@0.27.1366.741" timestamp="1579583824459" />
+    <state width="1320" height="2" key="GridCell.Tab.1.right" timestamp="1579583824460">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1320" height="2" key="GridCell.Tab.1.right/0.27.1366.741@0.27.1366.741" timestamp="1579583824460" />
+    <state x="540" y="42" width="276" height="681" key="RollbackChangesDialog" timestamp="1582035404038">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="540" y="42" width="276" height="681" key="RollbackChangesDialog/0.27.1366.741@0.27.1366.741" timestamp="1582035404038" />
+    <state x="164" y="27" width="1037" height="737" key="SettingsEditor" timestamp="1582038970294">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="164" y="27" width="1037" height="737" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1582038970294" />
+    <state x="278" y="115" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1579563832176">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="278" y="115" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1366.741@0.27.1366.741" timestamp="1579563832176" />
+    <state x="448" y="297" width="469" height="171" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582404611837">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="448" y="297" width="469" height="171" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1366.741@0.27.1366.741" timestamp="1582404611837" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1576606809161">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1576606809161" />
+  </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/t_inv/Main.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/t_inv/Main.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/t_inv/Main.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/t_inv/Main.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="getVentanaDeTiempo(transicion)" />

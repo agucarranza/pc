@@ -40,23 +40,6 @@ public class Main {
                                 new PInvariant(new int[]{0,22}, 1), //CARTEL
                         });
 
-
-        /*int[] t1 = {0,16};
-        int[] t2 = {1};
-        int[] t3 = {13,15};
-        int[] t4 = {2};
-        int[] t5 = {3};
-        int[] t6 = {4};
-        int[] t7 = {5};
-        int[] t8 = {6};
-        int[] t9 = {7};
-        int[] t10 = {10};
-        int[] t11 = {11};
-        int[] t12 = {9};
-        int[] t13 = {8};
-        int[] t14 = {14,17};
-        int[] t15 = {12};
-        */
         ListaTareas.add(new Tarea(monitor, new int[]{0, 16}));
         ListaTareas.add(new Tarea(monitor, new int[]{1}));
         ListaTareas.add(new Tarea(monitor, new int[]{13, 15}));
@@ -73,24 +56,6 @@ public class Main {
         ListaTareas.add(new Tarea(monitor, new int[]{14, 17}));
         ListaTareas.add(new Tarea(monitor, new int[]{12}));
 
-
-
-    
-        /*ListaTareas.add(new Tarea(monitor, t12));
-        ListaTareas.add(new Tarea(monitor, t2));
-        ListaTareas.add(new Tarea(monitor, t3));
-        ListaTareas.add(new Tarea(monitor, t4));
-        ListaTareas.add(new Tarea(monitor, t5));
-        ListaTareas.add(new Tarea(monitor, t6));
-        ListaTareas.add(new Tarea(monitor, t7));
-        ListaTareas.add(new Tarea(monitor, t8));
-        ListaTareas.add(new Tarea(monitor, t9));
-        ListaTareas.add(new Tarea(monitor, t10));
-        ListaTareas.add(new Tarea(monitor, t11));
-        ListaTareas.add(new Tarea(monitor, t1));
-        ListaTareas.add(new Tarea(monitor, t13));
-        ListaTareas.add(new Tarea(monitor, t14));
-        ListaTareas.add(new Tarea(monitor, t15));*/
         Thread hilo;
 
         for(Tarea tarea: ListaTareas){
