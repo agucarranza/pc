@@ -1,27 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7eb768c9-8b36-4676-8073-79e9e278fc18" name="Default Changelist" comment="Tiempo con alfa funcionando. Falta probar que tenga beta.">
-      <change afterPath="$PROJECT_DIR$/append.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp.vbak" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hola.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log2020.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/petri-nets/identidad-caso1.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/petri-nets/identidad-caso2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/t_inv/log-ejemp.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7eb768c9-8b36-4676-8073-79e9e278fc18" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/diagramas/diagramas.vpp" beforeDir="false" afterPath="$PROJECT_DIR$/diagramas/diagramas.vpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logfile.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/log/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/log/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/GestorDeMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/monitor/RdP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/monitor/RdP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/t_inv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/t_inv/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/t_inv/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/t_inv/log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +204,8 @@
       <workItem from="1579487294368" duration="10633000" />
       <workItem from="1582034973427" duration="25000" />
       <workItem from="1582035032744" duration="5172000" />
-      <workItem from="1582402774920" duration="601000" />
+      <workItem from="1582402774920" duration="1381000" />
+      <workItem from="1583446053718" duration="63000" />
     </task>
     <task id="LOCAL-00001" summary="Creados los hilos, faltan las politicas">
       <created>1561432636889</created>
@@ -442,7 +424,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564384850913</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="agregado el log que pueda leer el script de python.">
+      <created>1582404646443</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1582404646443</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,9 +490,10 @@
     <MESSAGE value="agrego metodos con tiempo, matrices sin tiempo. codigo funcionando." />
     <MESSAGE value="SYNCHRONIZED en el método disparar, habilito el log y detector de DEADLOCK" />
     <MESSAGE value="corrección log" />
-    <MESSAGE value="Tiempo con alfa funcionando. Falta probar que tenga beta." />
     <MESSAGE value="Funcionando con beta, agregado comentarios para el javadoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Funcionando con beta, agregado comentarios para el javadoc" />
+    <MESSAGE value="Tiempo con alfa funcionando. Falta probar que tenga beta." />
+    <MESSAGE value="agregado el log que pueda leer el script de python." />
+    <option name="LAST_COMMIT_MESSAGE" value="agregado el log que pueda leer el script de python." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -525,10 +515,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="417" y="227" width="521" height="310" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.27.1366.741@0.27.1366.741" timestamp="1576607444889" />
-    <state x="3" y="27" width="1232" height="741" key="CommitChangelistDialog2" timestamp="1582404586563">
+    <state x="3" y="27" width="1232" height="741" key="CommitChangelistDialog2" timestamp="1582404645978">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="3" y="27" width="1232" height="741" key="CommitChangelistDialog2/0.27.1366.741@0.27.1366.741" timestamp="1582404586563" />
+    <state x="3" y="27" width="1232" height="741" key="CommitChangelistDialog2/0.27.1366.741@0.27.1366.741" timestamp="1582404645978" />
     <state width="1320" height="200" key="GridCell.Tab.0.bottom" timestamp="1582077235509">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
@@ -569,10 +559,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="164" y="27" width="1037" height="737" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1582038970294" />
-    <state x="278" y="115" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1579563832176">
+    <state x="278" y="115" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1582404651837">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="278" y="115" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1366.741@0.27.1366.741" timestamp="1579563832176" />
+    <state x="278" y="115" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1366.741@0.27.1366.741" timestamp="1582404651837" />
     <state x="448" y="297" width="469" height="171" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582404611837">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
@@ -587,22 +577,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/t_inv/Main.java</url>
-          <line>36</line>
+          <line>39</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/t_inv/Main.java</url>
-          <line>39</line>
+          <line>42</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/t_inv/Main.java</url>
-          <line>40</line>
+          <line>43</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/t_inv/Main.java</url>
-          <line>71</line>
+          <line>74</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
